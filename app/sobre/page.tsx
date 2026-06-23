@@ -13,25 +13,25 @@ function InstagramGlyph({ className = '' }: { className?: string }) {
 }
 
 export const metadata: Metadata = {
-  title: 'Sobre Nos',
-  description: 'Conheca a historia da Fenix Veiculos, a multimarcas referencia em Laranjal, MG.',
+  title: 'Sobre Nós',
+  description: 'Conheça a história da Fênix Veículos, a multimarcas referência em Laranjal, MG.',
 }
 
 const values = [
   {
     icon: Search,
-    title: 'Transparencia',
-    desc: 'Todos os nossos veiculos sao publicados com informacoes detalhadas no Instagram, garantindo total transparencia na negociacao.',
+    title: 'Transparência',
+    desc: 'Todos os nossos veículos são publicados com informações detalhadas no Instagram, garantindo total transparência na negociação.',
   },
   {
     icon: Star,
     title: 'Qualidade',
-    desc: 'Selecionamos cuidadosamente cada veiculo do nosso estoque para garantir que voce tenha a melhor experiencia de compra.',
+    desc: 'Selecionamos cuidadosamente cada veículo do nosso estoque para garantir que você tenha a melhor experiência de compra.',
   },
   {
     icon: Handshake,
     title: 'Facilidade',
-    desc: 'Simplificamos o processo de compra e financiamento para que voce saia dirigindo sem complicacoes e sem burocracia.',
+    desc: 'Simplificamos o processo de compra e financiamento para que você saia dirigindo sem complicações e sem burocracia.',
   },
 ]
 
@@ -39,23 +39,23 @@ export default function SobrePage() {
   return (
     <section className="px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
       <div className="max-w-7xl mx-auto">
-        <nav className="mb-8 text-xs uppercase tracking-widest text-[#666]">
+        <nav className="mb-8 text-xs tracking-widest text-[#666] uppercase">
           <span>Home</span>
           <span className="mx-2">/</span>
-          <span className="text-[#C9A227]">Sobre nos</span>
+          <span className="text-[#C9A227]">Sobre Nós</span>
         </nav>
 
         <div className="mb-16 max-w-3xl">
-          <SectionHeader title="A historia da Fenix" highlight="Fenix" />
+          <SectionHeader title="A história da Fênix" highlight="Fênix" />
           <div className="space-y-4 text-base leading-8 text-[#AAA]">
             <p>
-              A <span className="font-semibold text-[#C9A227]">Fenix Veiculos Laranjal</span> nasceu com o proposito de transformar a experiencia de compra de carros em Laranjal, MG e regiao. Com um atendimento proximo, honesto e sem enrolacao, nos tornamos referencia na venda de veiculos seminovos multimarcas.
+              A <span className="font-semibold text-[#C9A227]">Fênix Veículos Laranjal</span> nasceu com o propósito de transformar a experiência de compra de carros em Laranjal, MG e região. Com um atendimento próximo, honesto e sem enrolação, nos tornamos referência na venda de veículos seminovos multimarcas.
             </p>
             <p>
-              Nossa presenca forte no Instagram, com mais de <span className="font-semibold text-white">22,5 mil seguidores</span> e mais de <span className="font-semibold text-white">5 mil publicacoes</span>, reflete nosso compromisso com a transparencia.
+              Nossa presença forte no Instagram, com mais de <span className="font-semibold text-white">22,5 mil seguidores</span> e mais de <span className="font-semibold text-white">5 mil publicações</span>, reflete nosso compromisso com a transparência.
             </p>
             <p>
-              Trabalhamos com os melhores bancos do pais para garantir financiamento facilitado, mesmo para quem tem restricoes no nome. Nosso objetivo e simples: <span className="font-semibold text-[#C9A227]">fazer voce sair dirigindo hoje</span>.
+              Trabalhamos com os melhores bancos do país para garantir financiamento facilitado, mesmo para quem tem restrições no nome. Nosso objetivo é simples: <span className="font-semibold text-[#C9A227]">fazer você sair dirigindo hoje</span>.
             </p>
           </div>
         </div>
@@ -64,13 +64,13 @@ export default function SobrePage() {
           <div className="grid grid-cols-2 gap-6 text-center md:grid-cols-4">
             {[
               { value: '22,5K', label: 'Seguidores no Instagram' },
-              { value: '5.199', label: 'Publicacoes' },
+              { value: '5.199', label: 'Publicações' },
               { value: '100+', label: 'Carros vendidos' },
-              { value: '4,9', label: 'Avaliacao media' },
+              { value: '4,9', label: 'Avaliação média' },
             ].map((item) => (
               <div key={item.label}>
                 <p className="font-bebas text-5xl tracking-wide text-[#C9A227]">{item.value}</p>
-                <p className="mt-1 text-xs uppercase tracking-widest text-[#666]">{item.label}</p>
+                <p className="mt-1 text-xs tracking-widest text-[#666] uppercase">{item.label}</p>
               </div>
             ))}
           </div>
@@ -84,7 +84,7 @@ export default function SobrePage() {
                 <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded border border-[rgba(201,162,39,0.3)] bg-[rgba(201,162,39,0.1)]">
                   <Icon size={24} className="text-[#C9A227]" />
                 </div>
-                <h3 className="font-oswald mb-3 text-xl font-extrabold uppercase text-white">{title}</h3>
+                <h3 className="font-oswald mb-3 text-xl font-extrabold text-white uppercase">{title}</h3>
                 <p className="text-sm leading-7 text-[#888]">{desc}</p>
               </div>
             ))}
@@ -94,7 +94,7 @@ export default function SobrePage() {
         <div className="flex h-64 items-center justify-center rounded border border-[#1f1f1f] bg-[#111]">
           <div className="text-center text-[#444]">
             <InstagramGlyph className="mx-auto mb-3" />
-            <p className="text-sm uppercase tracking-widest">Foto da equipe em breve</p>
+            <p className="text-sm tracking-widest uppercase">Foto da equipe em breve</p>
           </div>
         </div>
       </div>

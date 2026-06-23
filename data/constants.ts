@@ -1,12 +1,12 @@
 export const CONSTANTS = {
-  whatsapp: '55XXXXXXXXXXX',       // ← FILL IN real number
+  whatsapp: '55XXXXXXXXXXX',
   instagram: 'https://www.instagram.com/fenix_veiculos_laranjal',
   facebook: 'https://www.facebook.com/FenixMultimarcasLaranjal',
-  address: 'Laranjal, MG',         // ← FILL IN full address
+  address: 'Laranjal, MG',
   hours: 'Segunda a Sábado, 8h às 18h',
   email: '',
   cnpj: '',
-  mapsEmbedUrl: '',                // ← FILL IN Google Maps embed URL
+  mapsEmbedUrl: '',
   siteUrl: 'https://fenixveiculos.com.br',
 }
 

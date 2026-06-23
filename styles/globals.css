@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
 @import "tailwindcss";
 
@@ -7,6 +8,7 @@
 
 :root {
   --gold: #C9A227;
+  --gold-dim: rgba(201, 162, 39, 0.12);
   --gold-light: #E8C84A;
   --gold-dark: #A07A10;
   --gold-subtle: rgba(201, 162, 39, 0.15);
@@ -28,13 +30,14 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
   overflow-x: hidden;
 }
 

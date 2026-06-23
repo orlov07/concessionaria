@@ -22,16 +22,16 @@ function FacebookGlyph() {
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t-2 border-[#C9A227] bg-[#080808]">
+    <footer style={{ background: '#080808', borderTop: '2px solid #C9A227' }}>
       <div className="mx-auto max-w-7xl px-6 py-12 md:px-12 lg:px-20 xl:px-32">
         <div className="grid grid-cols-1 gap-10 border-b border-[#1a1a1a] pb-8 md:grid-cols-3">
           <div>
-            <div className="mb-1 font-oswald text-2xl font-extrabold uppercase tracking-[2px] text-[#C9A227]">
-              Fenix Veiculos
+            <div style={{ fontFamily: 'Oswald, sans-serif', fontSize: '22px', fontWeight: 800, color: '#C9A227', letterSpacing: '2px', marginBottom: '4px' }}>
+              FÊNIX VEÍCULOS
             </div>
-            <div className="mb-4 text-[11px] uppercase tracking-[2px] text-[#555]">Laranjal</div>
-            <p className="max-w-sm text-sm leading-7 text-[#555]">
-              Multimarcas referencia em Laranjal, MG. Financiamento facilitado, as melhores taxas e o seu proximo carro sem complicacao.
+            <div style={{ fontSize: '11px', color: '#555', letterSpacing: '2px', marginBottom: '16px' }}>LARANJAL</div>
+            <p style={{ fontSize: '13px', color: '#555', lineHeight: 1.7, maxWidth: '300px' }}>
+              Multimarcas referência em Laranjal, MG. Financiamento facilitado, as melhores taxas e o seu próximo carro sem complicação.
             </p>
             <div className="mt-5 flex gap-2">
               <a
@@ -65,12 +65,14 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="mb-4 text-[11px] font-extrabold uppercase tracking-[2px] text-white">Links rapidos</div>
+            <div style={{ fontSize: '11px', color: '#fff', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>
+              LINKS RÁPIDOS
+            </div>
             <nav className="space-y-3">
               {[
                 { label: 'Estoque', href: '/estoque' },
                 { label: 'Financiamento', href: '/financiamento' },
-                { label: 'Sobre nos', href: '/sobre' },
+                { label: 'Sobre Nós', href: '/sobre' },
                 { label: 'Contato', href: '/contato' },
               ].map((item) => (
                 <Link key={item.href} href={item.href} className="block text-sm text-[#555] transition-colors hover:text-[#C9A227]">
@@ -81,7 +83,9 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="mb-4 text-[11px] font-extrabold uppercase tracking-[2px] text-white">Contato</div>
+            <div style={{ fontSize: '11px', color: '#fff', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>
+              CONTATO
+            </div>
             <div className="space-y-3">
               <div className="flex items-start gap-2 text-sm text-[#555]">
                 <MapPin size={14} className="mt-0.5 shrink-0 text-[#C9A227]" />
@@ -100,7 +104,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-2 pt-5 text-xs text-[#333]">
-          <span>© 2024 Fenix Veiculos Laranjal. Todos os direitos reservados.</span>
+          <span>© 2024 Fênix Veículos Laranjal. Todos os direitos reservados.</span>
           <span>
             Desenvolvido por{' '}
             <a href="https://techbild.web.app" target="_blank" rel="noopener noreferrer" className="font-bold text-[#C9A227] no-underline">

@@ -24,16 +24,16 @@ function FacebookGlyph({ className = '' }: { className?: string }) {
 
 const contactItems = [
   { icon: MessageCircle, label: 'WhatsApp', value: CONSTANTS.whatsapp, href: `https://wa.me/${CONSTANTS.whatsapp}` },
-  { icon: MapPin, label: 'Endereco', value: CONSTANTS.address },
+  { icon: MapPin, label: 'Endereço', value: CONSTANTS.address },
   { icon: InstagramGlyph, label: 'Instagram', value: '@fenix_veiculos_laranjal', href: CONSTANTS.instagram },
-  { icon: Clock, label: 'Horario', value: CONSTANTS.hours },
+  { icon: Clock, label: 'Horário', value: CONSTANTS.hours },
 ]
 
 export default function ContatoPage() {
   return (
     <section className="border-t border-[#1f1f1f] bg-[#0d0d0d] px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
       <div className="max-w-7xl mx-auto">
-        <nav className="mb-8 text-xs uppercase tracking-widest text-[#666]">
+        <nav className="mb-8 text-xs tracking-widest text-[#666] uppercase">
           <span>Home</span>
           <span className="mx-2">/</span>
           <span className="text-[#C9A227]">Contato</span>
@@ -55,13 +55,13 @@ export default function ContatoPage() {
               )}
             </div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-3">
               {contactItems.map(({ icon: Icon, label, value, href }) => (
                 <div key={label} className="rounded border border-[#1f1f1f] bg-[#141414] p-4">
                   <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded border border-[rgba(201,162,39,0.3)] bg-[rgba(201,162,39,0.1)]">
                     <Icon size={18} className="text-[#C9A227]" />
                   </div>
-                  <div className="mb-1 text-[10px] uppercase tracking-[2px] text-[#555]">{label}</div>
+                  <div className="mb-1 text-[10px] tracking-[2px] text-[#555] uppercase">{label}</div>
                   {href ? (
                     <a href={href} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#C9A227] no-underline hover:text-[#E8C84A]">
                       {value}
@@ -75,21 +75,21 @@ export default function ContatoPage() {
                 <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded border border-[rgba(201,162,39,0.3)] bg-[rgba(201,162,39,0.1)]">
                   <FacebookGlyph className="text-[#C9A227]" />
                 </div>
-                <div className="mb-1 text-[10px] uppercase tracking-[2px] text-[#555]">Facebook</div>
+                <div className="mb-1 text-[10px] tracking-[2px] text-[#555] uppercase">Facebook</div>
                 <a href={CONSTANTS.facebook} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#C9A227] no-underline hover:text-[#E8C84A]">
-                  Fenix Multimarcas Laranjal
+                  Fênix Multimarcas Laranjal
                 </a>
               </div>
             </div>
           </div>
 
           <div className="rounded border border-[#1f1f1f] bg-[#141414] p-8">
-            <div className="mb-5 text-xs uppercase tracking-[3px] text-[#C9A227]">Enviar mensagem</div>
+            <div className="mb-5 text-xs tracking-[3px] text-[#C9A227] uppercase">ENVIAR MENSAGEM</div>
             <form
               onSubmit={(e) => {
                 e.preventDefault()
                 const formData = new FormData(e.currentTarget)
-                const text = `Ola! Meu nome e ${formData.get('name')}, fone: ${formData.get('phone')}.\n\nMensagem: ${formData.get('message')}`
+                const text = `Olá! Meu nome é ${formData.get('name')}, fone: ${formData.get('phone')}.\n\nMensagem: ${formData.get('message')}`
                 window.open(WHATSAPP_URL(text), '_blank')
               }}
               className="space-y-3"
@@ -110,14 +110,14 @@ export default function ContatoPage() {
                 name="message"
                 required
                 rows={5}
-                placeholder="Qual veiculo voce tem interesse?"
+                placeholder="Qual veículo você tem interesse?"
                 className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
               />
               <button
                 type="submit"
-                className="w-full rounded-sm bg-[#C9A227] px-4 py-3 text-sm font-extrabold uppercase tracking-[2px] text-black transition-colors hover:bg-[#E8C84A]"
+                className="w-full rounded-sm bg-[#C9A227] px-4 py-3 text-sm font-extrabold tracking-[2px] text-black uppercase transition-colors hover:bg-[#E8C84A]"
               >
-                Enviar via WhatsApp
+                ENVIAR VIA WHATSAPP
               </button>
             </form>
           </div>
