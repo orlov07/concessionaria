@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Concessionaria
 
-## Getting Started
+Landing page e vitrine de estoque para a Fenix Veiculos, desenvolvida com Next.js, React e Tailwind CSS.
 
-First, run the development server:
+## Visao geral
+
+O projeto entrega um site institucional para concessionaria com:
+
+- pagina inicial com hero, destaques e provas sociais
+- vitrine de veiculos com filtros
+- pagina de detalhes por veiculo
+- paginas de contato, financiamento e sobre
+- CTAs integrados ao WhatsApp
+
+Os dados do estoque estao mockados localmente em `data/vehicles.ts` e as informacoes de contato ficam centralizadas em `data/constants.ts`.
+
+## Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- Lucide React
+- React Hook Form
+
+## Rotas
+
+- `/` pagina inicial
+- `/estoque` listagem de veiculos
+- `/estoque/[slug]` detalhes do veiculo
+- `/financiamento` simulacao e informacoes de credito
+- `/contato` canais de atendimento
+- `/sobre` apresentacao da loja
+
+## Como rodar
+
+Requisitos:
+
+- Node.js 20 ou superior
+- npm
+
+Instalacao e execucao:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra `http://localhost:3000` no navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para producao:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Estrutura principal
 
-To learn more about Next.js, take a look at the following resources:
+```text
+app/                rotas da aplicacao
+components/ui/      componentes reutilizaveis da interface
+data/               mock de estoque e constantes da empresa
+public/             arquivos estaticos
+styles/             estilos globais
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Configuracoes pendentes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Antes de usar em producao, atualize `data/constants.ts` com os dados reais da empresa:
 
-## Deploy on Vercel
+- numero de WhatsApp
+- endereco completo
+- URL de embed do Google Maps
+- email
+- CNPJ
+- dominio final do site
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Tambem vale revisar os veiculos mockados em `data/vehicles.ts` para refletir o estoque real.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts
+
+- `npm run dev` inicia o ambiente local
+- `npm run build` gera o build de producao
+- `npm run start` sobe o build gerado
+- `npm run lint` executa o lint
