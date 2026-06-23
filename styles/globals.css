@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #C9A227;
+  --gold-light: #E8C84A;
+  --gold-dark: #A07A10;
+  --gold-subtle: rgba(201, 162, 39, 0.15);
+  --gold-border: rgba(201, 162, 39, 0.3);
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --card: #141414;
+  --border: #1f1f1f;
+  --text-primary: #FFFFFF;
+  --text-secondary: #AAAAAA;
+  --text-muted: #666666;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utility classes */
+.font-oswald { font-family: 'Oswald', sans-serif; }
+.font-bebas { font-family: 'Bebas Neue', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; }
+
+.text-gold { color: var(--gold); }
+.bg-gold { background-color: var(--gold); }
+.border-gold { border-color: var(--gold); }
+
+/* Gold glow */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(201, 162, 39, 0.3), 0 0 40px rgba(201, 162, 39, 0.1);
+}
+
+.gold-text-glow {
+  text-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
+
+/* Focus rings */
+*:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(201, 162, 39, 0.3);
+  color: #fff;
+}
+
+/* Hero radial glow */
+.hero-glow {
+  background: radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.08) 0%, transparent 60%);
+}
+
+/* Gradient top border */
+.gold-top-border {
+  border-top: 1px solid var(--gold);
+}
+
+/* Card styles */
+.vehicle-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.vehicle-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(201, 162, 39, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Section gold underline */
+.gold-underline::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--gold);
+  margin-top: 8px;
+}
+
+/* WhatsApp pulse */
+@keyframes pulse-gold {
+  0% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(201, 162, 39, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
+}
+
+.pulse-animation {
+  animation: pulse-gold 2s infinite;
+}
+
+@keyframes whatsapp-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2.5s infinite;
+}
