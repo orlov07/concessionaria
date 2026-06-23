@@ -17,8 +17,8 @@ interface FilterState {
 
 const brands = ['Todas as marcas', 'Chevrolet', 'Fiat', 'Ford', 'Honda', 'Hyundai', 'Jeep', 'Renault', 'Toyota', 'Volkswagen']
 const years = ['Qualquer ano', '2023', '2022', '2021', '2020', '2019', '2018 ou anterior']
-const priceRanges = ['Qualquer valor', 'Até R$ 50K', 'R$ 50K - R$ 80K', 'R$ 80K - R$ 120K', 'Acima de R$ 120K']
-const categories = ['SUV', 'Sedã', 'Hatch', 'Pickup']
+const priceRanges = ['Qualquer valor', 'Ate R$ 50K', 'R$ 50K - R$ 80K', 'R$ 80K - R$ 120K', 'Acima de R$ 120K']
+const categories = ['SUV', 'Seda', 'Hatch', 'Pickup']
 
 export function FilterBar({ onFilter }: FilterBarProps) {
   const [filters, setFilters] = useState<FilterState>({
@@ -40,13 +40,14 @@ export function FilterBar({ onFilter }: FilterBarProps) {
     onFilter?.(next)
   }
 
-  const fieldClass = 'w-full rounded-sm border border-[#2a2a2a] bg-[#0f0f0f] px-4 py-3 text-sm text-[#AAAAAA] outline-none transition-colors focus:border-[#C9A227]'
+  const fieldClass =
+    'w-full rounded-sm border border-[#2a2a2a] bg-[#0f0f0f] px-4 py-3 text-sm text-[#AAAAAA] outline-none transition-colors focus:border-[#C9A227]'
 
   return (
-    <div className="rounded border border-[#1f1f1f] bg-[#111] p-6 md:p-7">
-      <div className="mb-4 text-xs font-semibold tracking-[0.3em] text-[#C9A227] uppercase">Buscar Veículo</div>
+    <div className="rounded border border-[#1f1f1f] bg-[#111] p-5 md:p-7">
+      <div className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C9A227]">Buscar Veiculo</div>
 
-      <div className="mb-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mb-4 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
         <select className={fieldClass} onChange={(e) => update('brand', e.target.value)}>
           {brands.map((brand) => (
             <option key={brand} value={brand === 'Todas as marcas' ? '' : brand}>
@@ -80,7 +81,7 @@ export function FilterBar({ onFilter }: FilterBarProps) {
             key={category}
             type="button"
             onClick={() => setCategory(category)}
-            className={`rounded-sm border px-4 py-2 text-xs font-bold tracking-[1px] uppercase transition-all ${
+            className={`rounded-sm border px-4 py-2 text-xs font-bold uppercase tracking-[1px] transition-all ${
               filters.category === category
                 ? 'border-[#C9A227] bg-[#C9A227] text-black'
                 : 'border-[#333] text-[#888] hover:border-[#C9A227] hover:text-[#C9A227]'
@@ -93,10 +94,10 @@ export function FilterBar({ onFilter }: FilterBarProps) {
         <button
           type="button"
           onClick={() => onFilter?.(filters)}
-          className="ml-auto inline-flex items-center gap-2 rounded-sm bg-[#C9A227] px-5 py-2.5 text-xs font-extrabold tracking-[1px] text-black uppercase transition-colors hover:bg-[#E8C84A]"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#C9A227] px-5 py-2.5 text-xs font-extrabold uppercase tracking-[1px] text-black transition-colors hover:bg-[#E8C84A] sm:ml-auto sm:w-auto"
         >
           <Search size={13} />
-          BUSCAR VEÍCULO
+          Buscar veiculo
         </button>
       </div>
     </div>

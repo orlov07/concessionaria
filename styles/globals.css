@@ -41,6 +41,16 @@ body {
   overflow-x: hidden;
 }
 
+.page-shell {
+  margin: 0 auto;
+  width: min(100%, 1520px);
+}
+
+.section-shell {
+  padding-left: clamp(1.25rem, 2vw, 2rem);
+  padding-right: clamp(1.25rem, 2vw, 2rem);
+}
+
 /* Utility classes */
 .font-oswald { font-family: 'Oswald', sans-serif; }
 .font-bebas { font-family: 'Bebas Neue', sans-serif; }
@@ -131,6 +141,15 @@ body {
 }
 
 @media (max-width: 768px) {
+  .page-shell {
+    width: 100%;
+  }
+
+  .section-shell {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .gold-underline::after {
     margin-left: auto;
     margin-right: auto;

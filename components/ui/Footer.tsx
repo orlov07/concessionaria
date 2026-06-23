@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { MessageCircle, MapPin, Clock } from 'lucide-react'
+import { ArrowUpRight, Clock, MapPin, MessageCircle } from 'lucide-react'
 import { CONSTANTS, WHATSAPP_URL } from '@/data/constants'
 
 function InstagramGlyph() {
@@ -20,97 +20,114 @@ function FacebookGlyph() {
   )
 }
 
+const quickLinks = [
+  { label: 'Estoque', href: '/estoque' },
+  { label: 'Financiamento', href: '/financiamento' },
+  { label: 'Sobre nos', href: '/sobre' },
+  { label: 'Contato', href: '/contato' },
+]
+
 export function Footer() {
   return (
-    <footer style={{ background: '#080808', borderTop: '2px solid #C9A227' }}>
-      <div className="mx-auto max-w-7xl px-6 py-12 md:px-12 lg:px-20 xl:px-32">
-        <div className="grid grid-cols-1 gap-10 border-b border-[#1a1a1a] pb-8 md:grid-cols-3">
-          <div>
-            <div style={{ fontFamily: 'Oswald, sans-serif', fontSize: '22px', fontWeight: 800, color: '#C9A227', letterSpacing: '2px', marginBottom: '4px' }}>
-              FÊNIX VEÍCULOS
+    <footer className="border-t border-[#C9A227] bg-[#080808]">
+      <div className="section-shell">
+        <div className="page-shell py-12">
+          <div className="grid gap-10 border-b border-[#1a1a1a] pb-10 lg:grid-cols-[1.2fr_0.7fr_0.8fr_0.9fr]">
+            <div>
+              <div className="font-oswald text-[34px] font-extrabold uppercase leading-none tracking-[0.08em] text-[#C9A227]">
+                Fenix Veiculos
+              </div>
+              <div className="mt-1 text-[11px] uppercase tracking-[0.35em] text-[#7d6a2a]">Laranjal</div>
+              <p className="mt-5 max-w-md text-sm leading-8 text-[#777]">
+                Multimarcas com atendimento direto, financiamento facilitado e um projeto visual pronto para apresentacao da Fenix.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <a
+                  href={CONSTANTS.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-10 w-10 items-center justify-center rounded border border-[#2a2a2a] bg-[#121212] text-[#AAAAAA] transition-colors hover:border-[#C9A227] hover:text-[#C9A227]"
+                >
+                  <InstagramGlyph />
+                </a>
+                <a
+                  href={CONSTANTS.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="flex h-10 w-10 items-center justify-center rounded border border-[#2a2a2a] bg-[#121212] text-[#AAAAAA] transition-colors hover:border-[#C9A227] hover:text-[#C9A227]"
+                >
+                  <FacebookGlyph />
+                </a>
+                <a
+                  href={WHATSAPP_URL()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="flex h-10 w-10 items-center justify-center rounded border border-[#2a2a2a] bg-[#121212] text-[#AAAAAA] transition-colors hover:border-[#C9A227] hover:text-[#C9A227]"
+                >
+                  <MessageCircle size={16} />
+                </a>
+              </div>
             </div>
-            <div style={{ fontSize: '11px', color: '#555', letterSpacing: '2px', marginBottom: '16px' }}>LARANJAL</div>
-            <p style={{ fontSize: '13px', color: '#555', lineHeight: 1.7, maxWidth: '300px' }}>
-              Multimarcas referência em Laranjal, MG. Financiamento facilitado, as melhores taxas e o seu próximo carro sem complicação.
-            </p>
-            <div className="mt-5 flex gap-2">
+
+            <div>
+              <div className="mb-4 text-xs font-extrabold uppercase tracking-[0.3em] text-white">Links</div>
+              <nav className="space-y-3">
+                {quickLinks.map((item) => (
+                  <Link key={item.href} href={item.href} className="block text-sm text-[#666] transition-colors hover:text-[#C9A227]">
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            <div>
+              <div className="mb-4 text-xs font-extrabold uppercase tracking-[0.3em] text-white">Contato</div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3 text-sm text-[#777]">
+                  <MapPin size={16} className="mt-0.5 shrink-0 text-[#C9A227]" />
+                  <span>{CONSTANTS.address}</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm text-[#777]">
+                  <Clock size={16} className="mt-0.5 shrink-0 text-[#C9A227]" />
+                  <span>{CONSTANTS.hours}</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm text-[#777]">
+                  <span className="mt-0.5 shrink-0 text-[#C9A227]">
+                    <InstagramGlyph />
+                  </span>
+                  <span>@fenix_veiculos_laranjal</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded border border-[#1f1f1f] bg-[#111] p-5">
+              <div className="text-xs uppercase tracking-[0.28em] text-[#C9A227]">Atendimento rapido</div>
+              <p className="mt-4 text-sm leading-7 text-[#777]">
+                Use o WhatsApp para simulacao, duvidas sobre estoque e apresentacao do projeto para a loja.
+              </p>
               <a
-                href={CONSTANTS.instagram}
+                href={WHATSAPP_URL('Ola! Quero continuar a conversa sobre o projeto da concessionaria.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded border border-[#2a2a2a] bg-[#1a1a1a] text-[#AAAAAA] transition-colors hover:border-[#C9A227] hover:text-[#C9A227]"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-[#C9A227] transition-colors hover:text-[#E8C84A]"
               >
-                <InstagramGlyph />
-              </a>
-              <a
-                href={CONSTANTS.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded border border-[#2a2a2a] bg-[#1a1a1a] text-[#AAAAAA] transition-colors hover:border-[#C9A227] hover:text-[#C9A227]"
-              >
-                <FacebookGlyph />
-              </a>
-              <a
-                href={WHATSAPP_URL()}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="flex h-9 w-9 items-center justify-center rounded border border-[#2a2a2a] bg-[#1a1a1a] text-[#AAAAAA] transition-colors hover:border-[#C9A227] hover:text-[#C9A227]"
-              >
-                <MessageCircle size={16} />
+                Chamar no WhatsApp <ArrowUpRight size={15} />
               </a>
             </div>
           </div>
 
-          <div>
-            <div style={{ fontSize: '11px', color: '#fff', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>
-              LINKS RÁPIDOS
-            </div>
-            <nav className="space-y-3">
-              {[
-                { label: 'Estoque', href: '/estoque' },
-                { label: 'Financiamento', href: '/financiamento' },
-                { label: 'Sobre Nós', href: '/sobre' },
-                { label: 'Contato', href: '/contato' },
-              ].map((item) => (
-                <Link key={item.href} href={item.href} className="block text-sm text-[#555] transition-colors hover:text-[#C9A227]">
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+          <div className="flex flex-col gap-2 pt-5 text-xs text-[#444] md:flex-row md:items-center md:justify-between">
+            <span>© 2026 Fenix Veiculos Laranjal. Todos os direitos reservados.</span>
+            <span>
+              Desenvolvido por{' '}
+              <a href="https://techbild.web.app" target="_blank" rel="noopener noreferrer" className="font-bold text-[#C9A227] no-underline">
+                TechBild
+              </a>
+            </span>
           </div>
-
-          <div>
-            <div style={{ fontSize: '11px', color: '#fff', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>
-              CONTATO
-            </div>
-            <div className="space-y-3">
-              <div className="flex items-start gap-2 text-sm text-[#555]">
-                <MapPin size={14} className="mt-0.5 shrink-0 text-[#C9A227]" />
-                <span>{CONSTANTS.address}</span>
-              </div>
-              <div className="flex items-start gap-2 text-sm text-[#555]">
-                <Clock size={14} className="mt-0.5 shrink-0 text-[#C9A227]" />
-                <span>{CONSTANTS.hours}</span>
-              </div>
-              <div className="flex items-start gap-2 text-sm text-[#555]">
-                <span className="mt-0.5 shrink-0 text-[#C9A227]"><InstagramGlyph /></span>
-                <span>@fenix_veiculos_laranjal</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-5 text-xs text-[#333]">
-          <span>© 2024 Fênix Veículos Laranjal. Todos os direitos reservados.</span>
-          <span>
-            Desenvolvido por{' '}
-            <a href="https://techbild.web.app" target="_blank" rel="noopener noreferrer" className="font-bold text-[#C9A227] no-underline">
-              TechBild
-            </a>
-          </span>
         </div>
       </div>
     </footer>

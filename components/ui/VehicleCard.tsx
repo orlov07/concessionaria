@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { MessageCircle, Eye, Gauge, Zap, Settings2 } from 'lucide-react'
+import { Eye, Gauge, MessageCircle, Settings2, Zap } from 'lucide-react'
 import { WHATSAPP_URL } from '@/data/constants'
 
 interface VehicleCardProps {
@@ -20,7 +20,7 @@ interface VehicleCardProps {
 }
 
 export function VehicleCard({ slug, brand, model, year, km, price, fuel, transmission, badge, image }: VehicleCardProps) {
-  const waMsg = `Olá! Tenho interesse no ${brand} ${model} ${year} por R$ ${price.toLocaleString('pt-BR')}. Vi no site!`
+  const waMsg = `Ola! Tenho interesse no ${brand} ${model} ${year} por R$ ${price.toLocaleString('pt-BR')}.`
 
   return (
     <motion.article
@@ -28,150 +28,66 @@ export function VehicleCard({ slug, brand, model, year, km, price, fuel, transmi
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      style={{
-        background: '#141414',
-        border: '1px solid #1f1f1f',
-        borderRadius: '4px',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        transition: 'border-color 0.2s, transform 0.2s, box-shadow 0.2s',
-      }}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget as HTMLElement
-        el.style.borderColor = '#C9A227'
-        el.style.transform = 'translateY(-3px)'
-        el.style.boxShadow = '0 0 20px rgba(201,162,39,0.15)'
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget as HTMLElement
-        el.style.borderColor = '#1f1f1f'
-        el.style.transform = 'translateY(0)'
-        el.style.boxShadow = 'none'
-      }}
+      className="flex h-full flex-col overflow-hidden rounded border border-[#1f1f1f] bg-[#141414] transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:border-[#C9A227] hover:shadow-[0_0_20px_rgba(201,162,39,0.15)]"
     >
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '200px',
-          minHeight: '200px',
-          background: '#1a1a1a',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          overflow: 'hidden',
-          flexShrink: 0,
-        }}
-      >
+      <div className="relative flex h-[220px] w-full shrink-0 items-center justify-center overflow-hidden bg-[#1a1a1a]">
         {image ? (
-          <img src={image} alt={`${brand} ${model}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src={image} alt={`${brand} ${model}`} className="h-full w-full object-cover" />
         ) : (
-          <div style={{ textAlign: 'center' }}>
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1.5" style={{ margin: '0 auto', display: 'block' }}>
+          <div className="text-center">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1.5" className="mx-auto block">
               <path d="M5 17H3a2 2 0 0 1-2-2v-4l2.5-6h13L19 11v4a2 2 0 0 1-2 2h-2M5 17h10M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0" />
             </svg>
-            <div style={{ marginTop: '8px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', color: '#333' }}>
-              FOTO EM BREVE
-            </div>
+            <div className="mt-2 text-[11px] uppercase tracking-[0.14em] text-[#333]">Foto em breve</div>
           </div>
         )}
 
         {badge ? (
-          <span
-            style={{
-              position: 'absolute',
-              top: '10px',
-              left: '10px',
-              background: '#C9A227',
-              color: '#000',
-              fontSize: '9px',
-              fontWeight: 800,
-              padding: '4px 10px',
-              letterSpacing: '1.5px',
-              borderRadius: '2px',
-              textTransform: 'uppercase',
-            }}
-          >
+          <span className="absolute left-3 top-3 rounded-sm bg-[#C9A227] px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-black">
             {badge}
           </span>
         ) : null}
       </div>
 
-      <div style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <div style={{ fontSize: '10px', color: '#666', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '4px' }}>
-          {brand}
-        </div>
-        <h3 style={{ fontFamily: 'Oswald, sans-serif', fontSize: '17px', fontWeight: 800, color: '#fff', textTransform: 'uppercase', marginBottom: '6px', marginTop: 0 }}>
-          {model} · {year}
+      <div className="flex flex-1 flex-col p-5">
+        <div className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#666]">{brand}</div>
+        <h3 className="font-oswald text-[32px] font-bold uppercase leading-none text-white">
+          {model} - {year}
         </h3>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', fontSize: '12px', color: '#666', marginBottom: '10px' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <Gauge size={12} />
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[13px] text-[#777]">
+          <span className="flex items-center gap-1.5">
+            <Gauge size={13} />
             {km.toLocaleString('pt-BR')} km
           </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <Settings2 size={12} />
+          <span className="flex items-center gap-1.5">
+            <Settings2 size={13} />
             {transmission}
           </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <Zap size={12} />
+          <span className="flex items-center gap-1.5">
+            <Zap size={13} />
             {fuel}
           </span>
         </div>
 
-        <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '22px', fontWeight: 800, color: '#C9A227', letterSpacing: '1px', marginBottom: '12px' }}>
-          R$ {price.toLocaleString('pt-BR')}
-        </div>
+        <div className="mt-4 font-bebas text-[44px] leading-none tracking-[0.03em] text-[#C9A227]">R$ {price.toLocaleString('pt-BR')}</div>
 
-        <div className="mt-auto grid grid-cols-2 gap-2">
+        <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2">
           <Link
             href={`/estoque/${slug}`}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '4px',
-              background: 'transparent',
-              color: '#C9A227',
-              border: '1px solid #2a2a2a',
-              padding: '9px',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              borderRadius: '2px',
-            }}
+            className="inline-flex items-center justify-center gap-2 rounded-sm border border-[#2a2a2a] px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#C9A227] no-underline transition-colors hover:border-[#C9A227]"
           >
-            <Eye size={13} />
-            VER DETALHES
+            <Eye size={14} />
+            Ver detalhes
           </Link>
           <a
             href={WHATSAPP_URL(waMsg)}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '4px',
-              background: '#C9A227',
-              color: '#000',
-              border: 'none',
-              padding: '9px',
-              fontSize: '11px',
-              fontWeight: 800,
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              borderRadius: '2px',
-            }}
+            className="inline-flex items-center justify-center gap-2 rounded-sm bg-[#C9A227] px-4 py-3 text-xs font-extrabold uppercase tracking-[0.14em] text-black no-underline transition-colors hover:bg-[#E8C84A]"
           >
-            <MessageCircle size={13} />
-            WHATSAPP
+            <MessageCircle size={14} />
+            WhatsApp
           </a>
         </div>
       </div>

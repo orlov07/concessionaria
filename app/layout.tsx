@@ -1,27 +1,28 @@
 import type { Metadata } from 'next'
-import { NavBar } from '@/components/ui/NavBar'
 import { Footer } from '@/components/ui/Footer'
+import { NavBar } from '@/components/ui/NavBar'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://concessionaria-five.vercel.app'),
   title: {
-    default: 'Fênix Veículos Laranjal | Multimarcas com as Melhores Taxas',
-    template: '%s | Fênix Veículos Laranjal',
+    default: 'Fenix Veiculos Laranjal | Multimarcas com as Melhores Taxas',
+    template: '%s | Fenix Veiculos Laranjal',
   },
-  description: 'Compre seu carro com facilidade na Fênix Veículos em Laranjal, MG. Financiamento facilitado via Santander, Itaú, PAN. Melhores taxas, sem entrada.',
-  keywords: ['carros usados laranjal', 'multimarcas laranjal mg', 'financiamento veículos', 'fênix veículos'],
+  description: 'Projeto de concessionaria para a Fenix Veiculos em Laranjal, MG, com destaque para estoque, financiamento e contato direto.',
+  keywords: ['concessionaria', 'carros usados laranjal', 'multimarcas laranjal mg', 'financiamento veiculos', 'fenix veiculos'],
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://fenixveiculos.com.br',
-    siteName: 'Fênix Veículos Laranjal',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Fênix Veículos Laranjal' }],
+    url: 'https://concessionaria-five.vercel.app',
+    siteName: 'Fenix Veiculos Laranjal',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Fenix Veiculos Laranjal' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Fênix Veículos Laranjal',
-    description: 'Multimarcas com as melhores taxas em Laranjal, MG.',
+    title: 'Fenix Veiculos Laranjal',
+    description: 'Projeto visual de concessionaria com foco em estoque, financiamento e contato direto.',
     images: ['/og-image.jpg'],
   },
   robots: { index: true, follow: true },
@@ -30,19 +31,16 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'AutoDealer',
-  name: 'Fênix Veículos Laranjal',
-  description: 'Multimarcas referência em Laranjal, MG com financiamento facilitado.',
+  name: 'Fenix Veiculos Laranjal',
+  description: 'Projeto visual de concessionaria com financiamento facilitado e estoque em destaque.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Laranjal',
     addressRegion: 'MG',
     addressCountry: 'BR',
   },
-  url: 'https://fenixveiculos.com.br',
-  sameAs: [
-    'https://www.instagram.com/fenix_veiculos_laranjal',
-    'https://www.facebook.com/FenixMultimarcasLaranjal',
-  ],
+  url: 'https://concessionaria-five.vercel.app',
+  sameAs: ['https://www.instagram.com/fenix_veiculos_laranjal', 'https://www.facebook.com/FenixMultimarcasLaranjal'],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -57,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body className="bg-[#0a0a0a] text-white font-inter">
+      <body className="bg-[#0a0a0a] font-inter text-white">
         <NavBar />
         <main>{children}</main>
         <Footer />
