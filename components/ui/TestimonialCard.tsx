@@ -8,14 +8,22 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ quote, name, stars = 5 }: TestimonialCardProps) {
   return (
-    <div className="rounded border border-[#1f1f1f] border-t-[3px] border-t-[#C9A227] bg-[#141414] p-6">
-      <div className="mb-3 flex gap-1">
+    <div style={{
+      background: '#141414',
+      border: '1px solid #1f1f1f',
+      borderTop: '3px solid #C9A227',
+      borderRadius: '4px',
+      padding: '24px',
+    }}>
+      <div style={{ display: 'flex', gap: '4px', marginBottom: '12px' }}>
         {Array.from({ length: stars }).map((_, index) => (
-          <Star key={index} size={14} className="fill-[#C9A227] text-[#C9A227]" />
+          <Star key={index} size={14} style={{ fill: '#C9A227', color: '#C9A227' }} />
         ))}
       </div>
-      <p className="mb-4 text-sm italic leading-7 text-[#AAAAAA]">"{quote}"</p>
-      <p className="text-sm font-bold text-[#C9A227]">— {name}</p>
+      <p style={{ fontSize: '14px', fontStyle: 'italic', lineHeight: 1.7, color: '#AAAAAA', marginBottom: '16px' }}>
+        &ldquo;{quote}&rdquo;
+      </p>
+      <p style={{ fontSize: '13px', fontWeight: 700, color: '#C9A227' }}>— {name}</p>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import type { CSSProperties } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ChevronRight, CreditCard, CheckCircle2, Trophy, Star, MapPin, Clock, MessageCircle } from 'lucide-react'
@@ -47,9 +48,9 @@ const contactCards = [
   { icon: Clock, label: 'Horario', value: CONSTANTS.hours },
 ]
 
-function InstagramGlyph({ className = '' }: { className?: string }) {
+function InstagramGlyph({ className = '', size: _size, style }: { className?: string; size?: number; style?: CSSProperties }) {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} style={style}>
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
@@ -87,18 +88,30 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="max-w-3xl"
           >
-            <span className="mb-6 inline-block rounded-sm border border-[#C9A227] bg-[rgba(201,162,39,0.08)] px-4 py-1.5 text-xs font-bold uppercase tracking-[4px] text-[#C9A227]">
+            <span style={{
+              display: 'inline-block',
+              marginBottom: '24px',
+              fontSize: '12px',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '4px',
+              color: '#C9A227',
+              border: '1px solid #C9A227',
+              padding: '6px 16px',
+              borderRadius: '2px',
+              background: 'rgba(201,162,39,0.08)',
+            }}>
               Multimarcas · Laranjal MG
             </span>
 
-            <h1 className="font-oswald text-[clamp(36px,5vw,72px)] font-extrabold uppercase leading-[1.05] tracking-[-1px] text-white">
-              Seu proximo carro
+            <h1 style={{ fontFamily: 'Oswald, sans-serif', fontSize: 'clamp(36px, 5vw, 72px)', fontWeight: 800, lineHeight: 1.05, color: '#fff', textTransform: 'uppercase', letterSpacing: '-1px', margin: 0 }}>
+              Seu próximo carro
               <br />
-              esta aqui na <span className="text-[#C9A227]">Fenix</span>
+              está aqui na <span style={{ color: '#C9A227' }}>Fênix</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-[#AAAAAA] md:text-lg">
-              Melhores taxas, sem entrada. Financiamento facilitado via Santander, Itau, PAN e muito mais.
+            <p style={{ marginTop: '24px', maxWidth: '560px', fontSize: '16px', lineHeight: 1.7, color: '#AAAAAA' }}>
+              Melhores taxas, sem entrada. Financiamento facilitado via Santander, Itaú, PAN e muito mais.
             </p>
 
             <div className="mt-8 flex flex-row flex-wrap gap-4">
@@ -123,8 +136,8 @@ export default function HomePage() {
                   key={stat.label}
                   className={`py-4 text-center ${index < 3 ? 'md:border-r md:border-[#1f1f1f]' : ''}`}
                 >
-                  <div className="font-bebas text-3xl tracking-wide text-[#C9A227] md:text-4xl">{stat.value}</div>
-                  <div className="mt-1 text-[11px] uppercase tracking-[1px] text-[#666]">{stat.label}</div>
+                  <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', fontWeight: 800, color: '#C9A227', letterSpacing: '1px' }}>{stat.value}</div>
+                  <div style={{ fontSize: '11px', color: '#666', marginTop: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -171,30 +184,30 @@ export default function HomePage() {
       <section className="border-y border-[#1f1f1f] bg-[#0d0d0d] px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
         <div className="max-w-7xl mx-auto">
           <div className="mb-4 flex items-center gap-2">
-            <span className="text-xs uppercase tracking-[3px] text-[#C9A227]">Financiamento facilitado</span>
+            <span className="text-xs uppercase tracking-[3px] text-[#C9A227]">▬ Financiamento facilitado</span>
           </div>
 
           <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-            <div className="border-l-[3px] border-[#C9A227] pl-6">
-              <h2 className="font-oswald text-4xl font-extrabold uppercase leading-[1.1] text-white">
-                Aprovacao rapida,
+            <div style={{ borderLeft: '3px solid #C9A227', paddingLeft: '24px' }}>
+              <h2 style={{ fontFamily: 'Oswald, sans-serif', fontSize: '36px', fontWeight: 800, textTransform: 'uppercase', lineHeight: 1.1, color: '#fff' }}>
+                Aprovação rápida,
                 <br />
                 sem burocracia
               </h2>
-              <p className="mb-6 mt-4 text-sm leading-7 text-[#888]">
-                Trabalhamos com os melhores bancos para garantir as melhores condicoes para voce. Analise rapida e sem complicacao.
+              <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#888', margin: '16px 0 24px' }}>
+                Trabalhamos com os melhores bancos para garantir as melhores condições para você. Análise rápida e sem complicação.
               </p>
 
-              <div className="space-y-3">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {[
-                  'Simulacao gratuita e sem compromisso',
-                  'Sem entrada (sujeito a analise)',
-                  'Parcelamento em ate 60x',
-                  'Analise mesmo com restricao no nome',
+                  'Simulação gratuita e sem compromisso',
+                  'Sem entrada (sujeito a análise)',
+                  'Parcelamento em até 60x',
+                  'Análise mesmo com restrição no nome',
                 ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="shrink-0 text-[#C9A227]" />
-                    <span className="text-sm text-[#CCCCCC]">{item}</span>
+                  <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <CheckCircle2 size={16} style={{ flexShrink: 0, color: '#C9A227' }} />
+                    <span style={{ fontSize: '13px', color: '#ccc' }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -212,17 +225,25 @@ export default function HomePage() {
             </div>
 
             <div>
-              <div className="mb-4 text-[11px] uppercase tracking-[2px] text-[#555]">Bancos parceiros</div>
-              <div className="mb-6 flex flex-wrap gap-3">
+              <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '2px', color: '#555', marginBottom: '16px' }}>Bancos parceiros</div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '24px' }}>
                 {banks.map((bank) => (
-                  <span key={bank} className="rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-sm font-semibold text-[#AAAAAA]">
+                  <span key={bank} style={{
+                    background: '#1a1a1a',
+                    border: '1px solid #2a2a2a',
+                    color: '#aaa',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    padding: '8px 16px',
+                    borderRadius: '2px',
+                  }}>
                     {bank}
                   </span>
                 ))}
               </div>
-              <div className="rounded border border-[#1f1f1f] border-l-[3px] border-l-[#C9A227] bg-[#141414] p-6">
-                <div className="font-bebas text-[52px] leading-none text-[#C9A227]">60X</div>
-                <div className="mt-1 text-sm text-[#666]">Parcelas com os melhores bancos</div>
+              <div style={{ background: '#141414', border: '1px solid #1f1f1f', borderLeft: '3px solid #C9A227', borderRadius: '4px', padding: '24px' }}>
+                <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '52px', lineHeight: 1, color: '#C9A227' }}>60X</div>
+                <div style={{ marginTop: '4px', fontSize: '13px', color: '#666' }}>Parcelas com os melhores bancos</div>
               </div>
             </div>
           </div>
@@ -237,14 +258,28 @@ export default function HomePage() {
               <motion.div
                 key={title}
                 {...fadeInUp}
-                className="flex items-start gap-5 rounded border border-[#1f1f1f] bg-[#141414] p-7 transition-colors hover:border-[#C9A227]/40"
+                style={{
+                  background: '#141414',
+                  border: '1px solid #1f1f1f',
+                  borderRadius: '4px',
+                  padding: '28px',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '20px',
+                }}
               >
-                <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded border border-[rgba(201,162,39,0.3)] bg-[rgba(201,162,39,0.1)]">
-                  <Icon size={24} className="text-[#C9A227]" />
+                <div style={{
+                  width: '52px', height: '52px', flexShrink: 0,
+                  background: 'rgba(201,162,39,0.1)',
+                  border: '1px solid rgba(201,162,39,0.3)',
+                  borderRadius: '4px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <Icon size={24} style={{ color: '#C9A227' }} />
                 </div>
                 <div>
-                  <h3 className="font-oswald text-lg font-bold uppercase text-white">{title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-[#777]">{desc}</p>
+                  <h3 style={{ fontFamily: 'Oswald, sans-serif', fontSize: '16px', fontWeight: 800, textTransform: 'uppercase', color: '#fff', marginBottom: '6px' }}>{title}</h3>
+                  <p style={{ fontSize: '13px', color: '#777', lineHeight: 1.6 }}>{desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -284,11 +319,24 @@ export default function HomePage() {
                 href={CONSTANTS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex aspect-square items-center justify-center overflow-hidden rounded border border-[#2a2a2a] bg-[#141414] transition-colors hover:border-[#C9A227]"
+                style={{
+                  display: 'flex',
+                  aspectRatio: '1 / 1',
+                  background: '#141414',
+                  border: '1px solid #2a2a2a',
+                  borderRadius: '4px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textDecoration: 'none',
+                  overflow: 'hidden',
+                  transition: 'border-color 0.2s',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#C9A227' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#2a2a2a' }}
               >
-                <div className="text-center">
-                  <InstagramGlyph className="mx-auto text-[#333]" />
-                  <div className="mt-2 text-[10px] uppercase tracking-[1px] text-[#333]">Ver post</div>
+                <div style={{ textAlign: 'center' }}>
+                  <InstagramGlyph style={{ margin: '0 auto', display: 'block', color: '#333' }} />
+                  <div style={{ marginTop: '8px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px', color: '#333' }}>Ver post</div>
                 </div>
               </a>
             ))}
@@ -308,26 +356,34 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <div>
-              <div className="mb-5 flex h-[280px] flex-col items-center justify-center gap-2 rounded border border-[#2a2a2a] bg-[#141414]">
+              <div style={{ marginBottom: '20px', height: '280px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px', borderRadius: '4px', border: '1px solid #2a2a2a', background: '#141414', overflow: 'hidden' }}>
                 {CONSTANTS.mapsEmbedUrl ? (
                   <iframe src={CONSTANTS.mapsEmbedUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" />
                 ) : (
                   <>
-                    <MapPin size={32} className="text-[#C9A227]" />
-                    <div className="text-sm text-[#666]">Laranjal, MG</div>
-                    <div className="text-xs text-[#444]">Mapa em breve</div>
+                    <MapPin size={32} style={{ color: '#C9A227' }} />
+                    <div style={{ fontSize: '13px', color: '#666' }}>Laranjal, MG</div>
+                    <div style={{ fontSize: '11px', color: '#444' }}>Mapa em breve</div>
                   </>
                 )}
               </div>
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {contactCards.map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="rounded border border-[#1f1f1f] bg-[#141414] p-4">
-                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded border border-[rgba(201,162,39,0.3)] bg-[rgba(201,162,39,0.1)]">
-                      <Icon size={18} className="text-[#C9A227]" />
+                  <div key={label} style={{ background: '#141414', border: '1px solid #1f1f1f', borderRadius: '4px', padding: '16px' }}>
+                    <div style={{
+                      marginBottom: '12px',
+                      display: 'inline-flex',
+                      width: '40px', height: '40px',
+                      alignItems: 'center', justifyContent: 'center',
+                      borderRadius: '4px',
+                      border: '1px solid rgba(201,162,39,0.3)',
+                      background: 'rgba(201,162,39,0.1)',
+                    }}>
+                      <Icon size={18} style={{ color: '#C9A227' }} />
                     </div>
-                    <div className="mb-1 text-[10px] uppercase tracking-[2px] text-[#555]">{label}</div>
-                    <div className="text-sm font-semibold text-[#C9A227]">{value}</div>
+                    <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '2px', color: '#555', marginBottom: '4px' }}>{label}</div>
+                    <div style={{ fontSize: '13px', fontWeight: 600, color: '#C9A227' }}>{value}</div>
                   </div>
                 ))}
               </div>
@@ -341,10 +397,22 @@ export default function HomePage() {
   )
 }
 
+const inputStyle: CSSProperties = {
+  display: 'block',
+  width: '100%',
+  background: '#1a1a1a',
+  border: '1px solid #2a2a2a',
+  borderRadius: '2px',
+  padding: '12px 16px',
+  color: '#fff',
+  fontSize: '13px',
+  outline: 'none',
+}
+
 function ContactForm() {
   return (
-    <div className="rounded border border-[#1f1f1f] bg-[#141414] p-8">
-      <div className="mb-5 text-xs uppercase tracking-[3px] text-[#C9A227]">Enviar mensagem</div>
+    <div style={{ background: '#141414', border: '1px solid #1f1f1f', borderRadius: '4px', padding: '32px' }}>
+      <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '3px', color: '#C9A227', marginBottom: '20px' }}>Enviar mensagem</div>
       <form
         onSubmit={(e) => {
           e.preventDefault()
@@ -352,33 +420,45 @@ function ContactForm() {
           const name = formData.get('name')
           const phone = formData.get('phone')
           const message = formData.get('message')
-          const text = `Ola! Meu nome e ${name}, fone: ${phone}. ${message}`
+          const text = `Olá! Meu nome é ${name}, fone: ${phone}. ${message}`
           window.open(WHATSAPP_URL(text), '_blank')
         }}
-        className="space-y-3"
+        style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
       >
         <input
           name="name"
           required
           placeholder="Seu nome"
-          className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
+          style={inputStyle}
         />
         <input
           name="phone"
           required
           placeholder="Seu telefone / WhatsApp"
-          className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
+          style={inputStyle}
         />
         <textarea
           name="message"
           rows={4}
           required
-          placeholder="Qual veiculo voce tem interesse?"
-          className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
+          placeholder="Qual veículo você tem interesse?"
+          style={{ ...inputStyle, resize: 'vertical' }}
         />
         <button
           type="submit"
-          className="w-full rounded-sm bg-[#C9A227] px-4 py-3 text-sm font-extrabold uppercase tracking-[2px] text-black transition-colors hover:bg-[#E8C84A]"
+          style={{
+            width: '100%',
+            background: '#C9A227',
+            color: '#000',
+            border: 'none',
+            padding: '14px',
+            fontSize: '13px',
+            fontWeight: 800,
+            letterSpacing: '2px',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+            borderRadius: '2px',
+          }}
         >
           Enviar via WhatsApp
         </button>
