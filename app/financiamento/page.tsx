@@ -1,79 +1,83 @@
 import type { Metadata } from 'next'
+import { CheckCircle2 } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { FinancingSimulator } from '@/components/ui/FinancingSimulator'
 import { FAQAccordion } from '@/components/ui/FAQAccordion'
-import { CheckCircle2 } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Financiamento',
-  description: 'Financie seu veículo com as melhores taxas via Santander, Itaú, PAN e mais. Aprovação rápida, sem burocracia.',
+  description: 'Financie seu veiculo com as melhores taxas via Santander, Itau, PAN e mais. Aprovacao rapida, sem burocracia.',
 }
 
-const banks = ['Santander', 'Itaú', 'PAN', 'BV', 'Bradesco', 'Caixa Econômica']
+const banks = ['Santander', 'Itau', 'PAN', 'BV', 'Bradesco', 'Caixa Economica']
 
 export default function FinanciamentoPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-      {/* Breadcrumb */}
-      <nav className="text-[#666] text-xs uppercase tracking-widest mb-8">
-        <span>Home</span><span className="mx-2">/</span>
-        <span className="text-[#C9A227]">Financiamento</span>
-      </nav>
+    <section className="px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
+      <div className="max-w-7xl mx-auto">
+        <nav className="mb-8 text-xs uppercase tracking-widest text-[#666]">
+          <span>Home</span>
+          <span className="mx-2">/</span>
+          <span className="text-[#C9A227]">Financiamento</span>
+        </nav>
 
-      {/* Hero */}
-      <div className="text-center max-w-2xl mx-auto mb-14">
-        <span className="text-[#C9A227] text-xs uppercase tracking-[0.25em] font-bold mb-4 block">💳 Financiamento Facilitado</span>
-        <h1 className="font-oswald text-4xl md:text-6xl text-white uppercase mb-4">
-          Finance seu veículo com as<br />
-          <span className="text-[#C9A227]">melhores taxas</span>
-        </h1>
-        <p className="text-[#AAA] text-lg">Aprovação rápida, sem burocracia. Parceiro dos maiores bancos do Brasil.</p>
-      </div>
-
-      {/* Simulator */}
-      <div className="mb-16">
-        <SectionHeader title="Simulador de Financiamento" highlight="Financiamento" />
-        <FinancingSimulator />
-      </div>
-
-      {/* Benefits + Banks */}
-      <div className="grid md:grid-cols-2 gap-10 mb-16">
-        <div className="bg-[#111] border border-[#1f1f1f] p-8">
-          <h2 className="font-oswald text-white text-2xl uppercase mb-6">Vantagens</h2>
-          <ul className="flex flex-col gap-4">
-            {[
-              'Simulação gratuita e sem compromisso',
-              'Sem entrada (sujeito a análise de crédito)',
-              'Parcelamento em até 60 vezes',
-              'Análise mesmo com restrição no nome',
-              'Aprovação em até 1 hora',
-              'Documentação simplificada',
-              'Dê seu carro como entrada',
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-3 text-[#AAA] text-sm">
-                <CheckCircle2 size={16} className="text-[#C9A227] flex-shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <span className="mb-4 block text-xs font-bold uppercase tracking-[0.25em] text-[#C9A227]">Financiamento facilitado</span>
+          <h1 className="font-oswald text-4xl font-extrabold uppercase text-white md:text-6xl">
+            Finance seu veiculo com as
+            <br />
+            <span className="text-[#C9A227]">melhores taxas</span>
+          </h1>
+          <p className="mt-4 text-lg text-[#AAA]">Aprovacao rapida, sem burocracia. Parceiro dos maiores bancos do Brasil.</p>
         </div>
-        <div className="bg-[#111] border border-[#1f1f1f] p-8">
-          <h2 className="font-oswald text-white text-2xl uppercase mb-6">Bancos Parceiros</h2>
-          <div className="grid grid-cols-2 gap-3">
-            {banks.map((bank) => (
-              <div key={bank} className="border border-[#333] p-4 text-center hover:border-[#C9A227]/40 transition-colors">
-                <p className="text-white font-medium text-sm">{bank}</p>
-              </div>
-            ))}
+
+        <div className="mb-16">
+          <SectionHeader title="Simulador de Financiamento" highlight="Financiamento" />
+          <FinancingSimulator />
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 mb-16">
+          <div className="rounded border border-[#1f1f1f] bg-[#141414] p-8">
+            <h2 className="font-oswald mb-6 text-2xl font-extrabold uppercase text-white">Vantagens</h2>
+            <ul className="space-y-4">
+              {[
+                'Simulacao gratuita e sem compromisso',
+                'Sem entrada (sujeito a analise de credito)',
+                'Parcelamento em ate 60 vezes',
+                'Analise mesmo com restricao no nome',
+                'Aprovacao em ate 1 hora',
+                'Documentacao simplificada',
+                'De seu carro como entrada',
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-sm text-[#AAA]">
+                  <CheckCircle2 size={16} className="shrink-0 text-[#C9A227]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded border border-[#1f1f1f] bg-[#141414] p-8">
+            <div className="mb-4 text-[11px] uppercase tracking-[2px] text-[#555]">Bancos parceiros</div>
+            <div className="mb-6 flex flex-wrap gap-3">
+              {banks.map((bank) => (
+                <span key={bank} className="rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-sm font-semibold text-[#AAAAAA]">
+                  {bank}
+                </span>
+              ))}
+            </div>
+            <div className="rounded border border-[#1f1f1f] border-l-[3px] border-l-[#C9A227] bg-[#111] p-6">
+              <div className="font-bebas text-[52px] leading-none text-[#C9A227]">60X</div>
+              <div className="mt-1 text-sm text-[#666]">Parcelas com os melhores bancos</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* FAQ */}
-      <div className="mb-16">
-        <SectionHeader title="Dúvidas Frequentes" highlight="Frequentes" />
-        <FAQAccordion />
+        <div>
+          <SectionHeader title="Duvidas Frequentes" highlight="Frequentes" />
+          <FAQAccordion />
+        </div>
       </div>
-    </div>
+    </section>
   )
 }

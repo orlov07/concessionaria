@@ -1,7 +1,8 @@
 'use client'
+
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ChevronRight, CreditCard, CheckCircle2, Trophy, Users, Star } from 'lucide-react'
+import { ChevronRight, CreditCard, CheckCircle2, Trophy, Star, MapPin, Clock, MessageCircle } from 'lucide-react'
 import { VehicleCard } from '@/components/ui/VehicleCard'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { FilterBar } from '@/components/ui/FilterBar'
@@ -12,269 +13,325 @@ import { CONSTANTS, WHATSAPP_URL } from '@/data/constants'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
-}
-
-const stagger = {
-  animate: { transition: { staggerChildren: 0.08 } },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.45 },
 }
 
 const stats = [
   { value: '22,5K', label: 'Seguidores no Instagram' },
-  { value: '5K+', label: 'Publicações' },
-  { value: '0 Entrada*', label: 'Condições especiais' },
+  { value: '5K+', label: 'Publicacoes' },
+  { value: '0 Entrada*', label: 'Condicoes especiais' },
   { value: '100%', label: 'Digital' },
 ]
 
 const features = [
-  { icon: Trophy, title: 'Mais de 5000 publicações', desc: 'Transparência total no nosso Instagram' },
-  { icon: CreditCard, title: 'Financiamento facilitado', desc: 'Aprovação rápida pelos melhores bancos' },
-  { icon: CheckCircle2, title: 'Sem entrada', desc: 'Condições especiais para você sair dirigindo hoje' },
-  { icon: Star, title: '22,5K seguidores', desc: 'A loja mais indicada da região' },
+  { icon: Trophy, title: 'Mais de 5000 publicacoes', desc: 'Transparencia total no nosso Instagram' },
+  { icon: CreditCard, title: 'Financiamento facilitado', desc: 'Aprovacao rapida pelos melhores bancos' },
+  { icon: CheckCircle2, title: 'Sem entrada', desc: 'Condicoes especiais para voce sair dirigindo hoje' },
+  { icon: Star, title: '22,5K seguidores', desc: 'A loja mais indicada da regiao' },
 ]
 
-const banks = ['Santander', 'Itaú', 'PAN', 'BV', 'Bradesco', 'Caixa Econômica']
+const banks = ['Santander', 'Itau', 'PAN', 'BV', 'Bradesco', 'Caixa Economica']
 
 const testimonials = [
-  { quote: 'Comprei meu carro sem complicação nenhuma. Financiamento aprovado em menos de 1 hora!', name: 'Marcos S.' },
-  { quote: 'Melhor atendimento que já recebi numa loja de carros. Super recomendo a Fênix!', name: 'Ana Paula M.' },
-  { quote: 'Saí de carro zero km sem entrada! Equipe muito atenciosa e honesta.', name: 'Roberto L.' },
+  { quote: 'Comprei meu carro sem complicacao nenhuma. Financiamento aprovado em menos de 1 hora!', name: 'Marcos S.' },
+  { quote: 'Melhor atendimento que ja recebi numa loja de carros. Super recomendo a Fenix!', name: 'Ana Paula M.' },
+  { quote: 'Sai de carro zero km sem entrada! Equipe muito atenciosa e honesta.', name: 'Roberto L.' },
 ]
+
+const contactCards = [
+  { icon: MessageCircle, label: 'WhatsApp', value: CONSTANTS.whatsapp },
+  { icon: MapPin, label: 'Endereco', value: CONSTANTS.address },
+  { icon: InstagramGlyph, label: 'Instagram', value: '@fenix_veiculos_laranjal' },
+  { icon: Clock, label: 'Horario', value: CONSTANTS.hours },
+]
+
+function InstagramGlyph({ className = '' }: { className?: string }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
 
 export default function HomePage() {
   const featured = vehicles.slice(0, 6)
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative min-h-[88vh] flex flex-col justify-center bg-[#0a0a0a] hero-glow overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-20 w-full">
-          <motion.div {...fadeInUp} className="max-w-3xl">
-            <span className="inline-flex items-center px-3 py-1 border border-[#C9A227]/40 text-[#C9A227] text-xs font-bold tracking-[0.25em] uppercase mb-8">
+      <section
+        className="relative min-h-[90vh] overflow-hidden px-6 pb-16 pt-24 md:px-12 lg:px-20 xl:px-32"
+        style={{
+          background: `
+            radial-gradient(ellipse at 80% 20%, rgba(201,162,39,0.12) 0%, transparent 50%),
+            radial-gradient(ellipse at 20% 80%, rgba(201,162,39,0.06) 0%, transparent 40%),
+            linear-gradient(180deg, #0a0a0a 0%, #0f0d00 100%)
+          `,
+        }}
+      >
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <svg className="absolute right-0 top-0 h-full w-1/2 opacity-[0.08]" viewBox="0 0 800 900" fill="none">
+            <line x1="800" y1="0" x2="200" y2="900" stroke="#C9A227" strokeWidth="1" />
+            <line x1="750" y1="0" x2="150" y2="900" stroke="#C9A227" strokeWidth="0.5" />
+            <line x1="850" y1="0" x2="300" y2="900" stroke="#C9A227" strokeWidth="0.5" />
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto flex min-h-[calc(90vh-6rem)] items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl"
+          >
+            <span className="mb-6 inline-block rounded-sm border border-[#C9A227] bg-[rgba(201,162,39,0.08)] px-4 py-1.5 text-xs font-bold uppercase tracking-[4px] text-[#C9A227]">
               Multimarcas · Laranjal MG
             </span>
 
-            <h1 className="font-oswald text-5xl md:text-7xl font-bold text-white uppercase leading-tight mb-6">
-              Seu próximo carro<br />
-              está aqui na{' '}
-              <span className="text-[#C9A227] gold-text-glow">Fênix</span>
+            <h1 className="font-oswald text-[clamp(36px,5vw,72px)] font-extrabold uppercase leading-[1.05] tracking-[-1px] text-white">
+              Seu proximo carro
+              <br />
+              esta aqui na <span className="text-[#C9A227]">Fenix</span>
             </h1>
 
-            <p className="text-[#AAAAAA] text-lg md:text-xl mb-10 max-w-xl leading-relaxed">
-              Melhores taxas, sem entrada. Financiamento facilitado via Santander, Itaú, PAN e muito mais.
+            <p className="mt-6 max-w-xl text-base leading-7 text-[#AAAAAA] md:text-lg">
+              Melhores taxas, sem entrada. Financiamento facilitado via Santander, Itau, PAN e muito mais.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-row flex-wrap gap-4">
               <GoldButton as="a" href="#estoque" size="lg" variant="solid">
-                Ver Estoque Completo
+                Ver estoque completo
               </GoldButton>
-              <GoldButton as="a" href={WHATSAPP_URL('Olá! Gostaria de simular um financiamento.')} target="_blank" rel="noopener noreferrer" size="lg" variant="ghost">
-                Simular Financiamento
+              <GoldButton
+                as="a"
+                href={WHATSAPP_URL('Ola! Gostaria de simular um financiamento.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg"
+                variant="ghost"
+              >
+                Simular financiamento
               </GoldButton>
+            </div>
+
+            <div className="mt-12 grid grid-cols-2 border-t border-[#1f1f1f] pt-8 md:grid-cols-4">
+              {stats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={`py-4 text-center ${index < 3 ? 'md:border-r md:border-[#1f1f1f]' : ''}`}
+                >
+                  <div className="font-bebas text-3xl tracking-wide text-[#C9A227] md:text-4xl">{stat.value}</div>
+                  <div className="mt-1 text-[11px] uppercase tracking-[1px] text-[#666]">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
+      </section>
 
-        {/* Stats bar */}
-        <div className="border-t border-[#1f1f1f] bg-[#0d0d0d]">
-          <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <motion.div
-              variants={stagger}
-              initial="initial"
-              animate="animate"
-              className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#1f1f1f]"
-            >
-              {stats.map((s) => (
-                <motion.div key={s.label} variants={fadeInUp} className="px-6 py-6 text-center">
-                  <p className="font-bebas text-3xl md:text-4xl text-[#C9A227] tracking-wide">{s.value}</p>
-                  <p className="text-[#666] text-xs uppercase tracking-wide mt-1">{s.label}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+      <section className="px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32" id="estoque">
+        <div className="max-w-7xl mx-auto">
+          <FilterBar />
         </div>
       </section>
 
-      {/* FILTER BAR */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 -mt-1 py-10" id="estoque">
-        <FilterBar />
-      </section>
-
-      {/* FEATURED VEHICLES */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-        <SectionHeader
-          title="Estoque em Destaque"
-          highlight="Destaque"
-          action={
-            <Link href="/estoque" className="flex items-center gap-1 text-[#C9A227] text-sm hover:text-[#E8C84A] transition-colors font-medium">
-              Ver todos <ChevronRight size={16} />
-            </Link>
-          }
-        />
-        <motion.div
-          variants={stagger}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {featured.map((v) => (
-            <VehicleCard key={v.id} {...v} />
-          ))}
-        </motion.div>
-        <div className="text-center mt-10">
-          <GoldButton as="a" href="/estoque" variant="ghost" size="lg">
-            Carregar mais veículos
-          </GoldButton>
-        </div>
-      </section>
-
-      {/* FINANCING */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-16">
-        <div className="border-l-4 border-[#C9A227] pl-6 md:pl-10 grid md:grid-cols-2 gap-12 items-start bg-[#111] py-10 px-6 md:px-10">
-          <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-[rgba(201,162,39,0.1)] flex items-center justify-center">
-                <CreditCard size={20} className="text-[#C9A227]" />
-              </div>
-              <span className="text-[#C9A227] text-xs uppercase tracking-widest font-bold">Financiamento Facilitado</span>
-            </div>
-            <h2 className="font-oswald text-3xl md:text-4xl text-white uppercase mb-3">
-              Aprovação rápida,<br />sem burocracia
-            </h2>
-            <p className="text-[#AAA] mb-8">Trabalhamos com os melhores bancos para garantir as melhores condições para você. Análise rápida e sem complicação.</p>
-            <ul className="flex flex-col gap-3 mb-8">
-              {[
-                'Simulação gratuita e sem compromisso',
-                'Sem entrada (sujeito a análise)',
-                'Parcelamento em até 60x',
-                'Análise mesmo com restrição no nome',
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-[#AAA]">
-                  <CheckCircle2 size={16} className="text-[#C9A227] flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <GoldButton as="a" href={WHATSAPP_URL('Olá! Quero simular meu financiamento agora!')} target="_blank" rel="noopener noreferrer" size="lg">
-              Simular agora no WhatsApp
+      <section className="px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            title="Estoque em Destaque"
+            highlight="Destaque"
+            action={
+              <Link href="/estoque" className="flex items-center gap-1 text-sm font-medium text-[#C9A227] transition-colors hover:text-[#E8C84A]">
+                Ver todos <ChevronRight size={16} />
+              </Link>
+            }
+          />
+          <motion.div
+            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={{ animate: { transition: { staggerChildren: 0.08 } } }}
+          >
+            {featured.map((vehicle) => (
+              <VehicleCard key={vehicle.id} {...vehicle} />
+            ))}
+          </motion.div>
+          <div className="mt-10 text-center">
+            <GoldButton as="a" href="/estoque" variant="ghost" size="lg">
+              Carregar mais veiculos
             </GoldButton>
           </div>
-          <div>
-            <p className="text-[#666] text-xs uppercase tracking-widest mb-5 font-medium">Bancos parceiros</p>
-            <div className="flex flex-wrap gap-2 mb-8">
-              {banks.map((b) => (
-                <span key={b} className="px-4 py-2 border border-[#333] text-[#AAA] text-sm">{b}</span>
-              ))}
-            </div>
-            <div className="bg-[#0a0a0a] border border-[#C9A227]/20 p-6">
-              <p className="text-[#C9A227] font-bebas text-4xl tracking-wide">60x</p>
-              <p className="text-[#888] text-sm mt-1">Parcelas com os melhores bancos</p>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* WHY FÊNIX */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-        <SectionHeader title="Por que escolher a Fênix?" highlight="Fênix?" centered />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map(({ icon: Icon, title, desc }) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-[#141414] border border-[#1f1f1f] p-6 hover:border-[#C9A227]/40 transition-colors"
-            >
-              <div className="w-10 h-10 bg-[rgba(201,162,39,0.1)] flex items-center justify-center mb-4">
-                <Icon size={20} className="text-[#C9A227]" />
+      <section className="border-y border-[#1f1f1f] bg-[#0d0d0d] px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-4 flex items-center gap-2">
+            <span className="text-xs uppercase tracking-[3px] text-[#C9A227]">Financiamento facilitado</span>
+          </div>
+
+          <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+            <div className="border-l-[3px] border-[#C9A227] pl-6">
+              <h2 className="font-oswald text-4xl font-extrabold uppercase leading-[1.1] text-white">
+                Aprovacao rapida,
+                <br />
+                sem burocracia
+              </h2>
+              <p className="mb-6 mt-4 text-sm leading-7 text-[#888]">
+                Trabalhamos com os melhores bancos para garantir as melhores condicoes para voce. Analise rapida e sem complicacao.
+              </p>
+
+              <div className="space-y-3">
+                {[
+                  'Simulacao gratuita e sem compromisso',
+                  'Sem entrada (sujeito a analise)',
+                  'Parcelamento em ate 60x',
+                  'Analise mesmo com restricao no nome',
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <CheckCircle2 size={16} className="shrink-0 text-[#C9A227]" />
+                    <span className="text-sm text-[#CCCCCC]">{item}</span>
+                  </div>
+                ))}
               </div>
-              <h3 className="font-oswald text-white text-lg uppercase mb-2">{title}</h3>
-              <p className="text-[#888] text-sm leading-relaxed">{desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
-      {/* TESTIMONIALS */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-        <SectionHeader title="O que nossos clientes dizem" highlight="clientes" centered />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <TestimonialCard key={t.name} {...t} />
-          ))}
-        </div>
-      </section>
-
-      {/* INSTAGRAM */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-        <SectionHeader
-          title="Nos acompanhe no Instagram"
-          subtitle=""
-          action={
-            <a href={CONSTANTS.instagram} target="_blank" rel="noopener noreferrer"
-              className="text-[#C9A227] text-sm hover:text-[#E8C84A] font-medium">
-              @fenix_veiculos_laranjal
-            </a>
-          }
-        />
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
-          {Array(6).fill(null).map((_, i) => (
-            <div key={i} className="aspect-square bg-[#141414] border border-[#1f1f1f] flex items-center justify-center text-[#333] hover:border-[#C9A227]/40 transition-colors cursor-pointer">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-              </svg>
+              <GoldButton
+                as="a"
+                href={WHATSAPP_URL('Ola! Quero simular meu financiamento agora!')}
+                target="_blank"
+                rel="noopener noreferrer"
+                size="md"
+                className="mt-8"
+              >
+                Simular agora no WhatsApp
+              </GoldButton>
             </div>
-          ))}
-        </div>
-        {/* TODO: Integrate Instagram Basic Display API for live posts */}
-        <div className="text-center">
-          <GoldButton as="a" href={CONSTANTS.instagram} target="_blank" rel="noopener noreferrer" variant="ghost" size="lg">
-            Seguir no Instagram
-          </GoldButton>
-        </div>
-      </section>
 
-      {/* CONTACT */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-        <SectionHeader title="Fale com a Gente" highlight="Gente" />
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Map placeholder */}
-          <div>
-            <div className="bg-[#111] border border-[#1f1f1f] h-64 flex items-center justify-center text-[#555] mb-4">
-              {CONSTANTS.mapsEmbedUrl ? (
-                <iframe src={CONSTANTS.mapsEmbedUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" />
-              ) : (
-                <div className="text-center">
-                  <p className="text-2xl mb-2">📍</p>
-                  <p className="text-sm">Laranjal, MG</p>
-                  <p className="text-xs text-[#444] mt-1">Mapa em breve</p>
-                </div>
-              )}
+            <div>
+              <div className="mb-4 text-[11px] uppercase tracking-[2px] text-[#555]">Bancos parceiros</div>
+              <div className="mb-6 flex flex-wrap gap-3">
+                {banks.map((bank) => (
+                  <span key={bank} className="rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-sm font-semibold text-[#AAAAAA]">
+                    {bank}
+                  </span>
+                ))}
+              </div>
+              <div className="rounded border border-[#1f1f1f] border-l-[3px] border-l-[#C9A227] bg-[#141414] p-6">
+                <div className="font-bebas text-[52px] leading-none text-[#C9A227]">60X</div>
+                <div className="mt-1 text-sm text-[#666]">Parcelas com os melhores bancos</div>
+              </div>
             </div>
-            <p className="text-[#AAA] text-sm">📍 {CONSTANTS.address}</p>
           </div>
+        </div>
+      </section>
 
-          {/* Contact info */}
-          <div className="flex flex-col gap-4">
-            {[
-              { icon: '📱', label: 'WhatsApp', value: CONSTANTS.whatsapp },
-              { icon: '📸', label: 'Instagram', value: '@fenix_veiculos_laranjal' },
-              { icon: '👥', label: 'Facebook', value: 'Fênix Multimarcas Laranjal' },
-              { icon: '🕐', label: 'Horário', value: CONSTANTS.hours },
-            ].map((c) => (
-              <div key={c.label} className="flex items-start gap-4 p-4 bg-[#111] border border-[#1f1f1f]">
-                <span className="text-xl">{c.icon}</span>
+      <section className="bg-[#0a0a0a] px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader title="Por que escolher a Fenix?" highlight="Fenix?" centered />
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {features.map(({ icon: Icon, title, desc }) => (
+              <motion.div
+                key={title}
+                {...fadeInUp}
+                className="flex items-start gap-5 rounded border border-[#1f1f1f] bg-[#141414] p-7 transition-colors hover:border-[#C9A227]/40"
+              >
+                <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded border border-[rgba(201,162,39,0.3)] bg-[rgba(201,162,39,0.1)]">
+                  <Icon size={24} className="text-[#C9A227]" />
+                </div>
                 <div>
-                  <p className="text-[#666] text-xs uppercase tracking-widest mb-0.5">{c.label}</p>
-                  <p className="text-white text-sm">{c.value}</p>
+                  <h3 className="font-oswald text-lg font-bold uppercase text-white">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#777]">{desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[#1f1f1f] bg-[#080808] px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader title="O que nossos clientes dizem" highlight="clientes" centered />
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <TestimonialCard key={testimonial.name} {...testimonial} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[#1f1f1f] bg-[#0a0a0a] px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <SectionHeader title="Nos acompanhe no Instagram" highlight="Instagram" />
+            <a
+              href={CONSTANTS.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-bold text-[#C9A227] no-underline transition-colors hover:text-[#E8C84A]"
+            >
+              @fenix_veiculos_laranjal →
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <a
+                key={index}
+                href={CONSTANTS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex aspect-square items-center justify-center overflow-hidden rounded border border-[#2a2a2a] bg-[#141414] transition-colors hover:border-[#C9A227]"
+              >
+                <div className="text-center">
+                  <InstagramGlyph className="mx-auto text-[#333]" />
+                  <div className="mt-2 text-[10px] uppercase tracking-[1px] text-[#333]">Ver post</div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <GoldButton as="a" href={CONSTANTS.instagram} target="_blank" rel="noopener noreferrer" variant="ghost" size="lg">
+              Seguir no Instagram
+            </GoldButton>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[#1f1f1f] bg-[#0d0d0d] px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader title="Fale com a Gente" highlight="Gente" />
+
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+            <div>
+              <div className="mb-5 flex h-[280px] flex-col items-center justify-center gap-2 rounded border border-[#2a2a2a] bg-[#141414]">
+                {CONSTANTS.mapsEmbedUrl ? (
+                  <iframe src={CONSTANTS.mapsEmbedUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" />
+                ) : (
+                  <>
+                    <MapPin size={32} className="text-[#C9A227]" />
+                    <div className="text-sm text-[#666]">Laranjal, MG</div>
+                    <div className="text-xs text-[#444]">Mapa em breve</div>
+                  </>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {contactCards.map(({ icon: Icon, label, value }) => (
+                  <div key={label} className="rounded border border-[#1f1f1f] bg-[#141414] p-4">
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded border border-[rgba(201,162,39,0.3)] bg-[rgba(201,162,39,0.1)]">
+                      <Icon size={18} className="text-[#C9A227]" />
+                    </div>
+                    <div className="mb-1 text-[10px] uppercase tracking-[2px] text-[#555]">{label}</div>
+                    <div className="text-sm font-semibold text-[#C9A227]">{value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             <ContactForm />
           </div>
@@ -286,24 +343,43 @@ export default function HomePage() {
 
 function ContactForm() {
   return (
-    <div className="bg-[#111] border border-[#1f1f1f] p-5 mt-2">
-      <p className="text-[#C9A227] text-xs uppercase tracking-widest mb-4 font-bold">Enviar mensagem</p>
+    <div className="rounded border border-[#1f1f1f] bg-[#141414] p-8">
+      <div className="mb-5 text-xs uppercase tracking-[3px] text-[#C9A227]">Enviar mensagem</div>
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          const fd = new FormData(e.currentTarget)
-          const name = fd.get('name')
-          const phone = fd.get('phone')
-          const message = fd.get('message')
-          const text = `Olá! Meu nome é ${name}, fone: ${phone}. ${message}`
+          const formData = new FormData(e.currentTarget)
+          const name = formData.get('name')
+          const phone = formData.get('phone')
+          const message = formData.get('message')
+          const text = `Ola! Meu nome e ${name}, fone: ${phone}. ${message}`
           window.open(WHATSAPP_URL(text), '_blank')
         }}
-        className="flex flex-col gap-3"
+        className="space-y-3"
       >
-        <input name="name" required placeholder="Seu nome" className="bg-[#0a0a0a] border border-[#333] text-white px-3 py-2.5 text-sm focus:border-[#C9A227] outline-none transition-colors" />
-        <input name="phone" required placeholder="Seu telefone / WhatsApp" className="bg-[#0a0a0a] border border-[#333] text-white px-3 py-2.5 text-sm focus:border-[#C9A227] outline-none transition-colors" />
-        <textarea name="message" rows={3} required placeholder="Qual veículo você tem interesse?" className="bg-[#0a0a0a] border border-[#333] text-white px-3 py-2.5 text-sm focus:border-[#C9A227] outline-none transition-colors resize-none" />
-        <button type="submit" className="bg-[#C9A227] text-black font-bold py-3 uppercase tracking-wide text-sm hover:bg-[#E8C84A] transition-colors">
+        <input
+          name="name"
+          required
+          placeholder="Seu nome"
+          className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
+        />
+        <input
+          name="phone"
+          required
+          placeholder="Seu telefone / WhatsApp"
+          className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
+        />
+        <textarea
+          name="message"
+          rows={4}
+          required
+          placeholder="Qual veiculo voce tem interesse?"
+          className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
+        />
+        <button
+          type="submit"
+          className="w-full rounded-sm bg-[#C9A227] px-4 py-3 text-sm font-extrabold uppercase tracking-[2px] text-black transition-colors hover:bg-[#E8C84A]"
+        >
           Enviar via WhatsApp
         </button>
       </form>

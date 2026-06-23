@@ -1,91 +1,112 @@
 import Link from 'next/link'
-import { MessageCircle } from 'lucide-react'
-import { CONSTANTS } from '@/data/constants'
+import { MessageCircle, MapPin, Clock } from 'lucide-react'
+import { CONSTANTS, WHATSAPP_URL } from '@/data/constants'
 
-const IgIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-    <rect x="2" y="2" width="20" height="20" rx="5" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-  </svg>
-)
-const FbIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-  </svg>
-)
+function InstagramGlyph() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function FacebookGlyph() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  )
+}
 
 export function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] border-t border-[#C9A227] mt-20">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Brand */}
+    <footer className="mt-20 border-t-2 border-[#C9A227] bg-[#080808]">
+      <div className="mx-auto max-w-7xl px-6 py-12 md:px-12 lg:px-20 xl:px-32">
+        <div className="grid grid-cols-1 gap-10 border-b border-[#1a1a1a] pb-8 md:grid-cols-3">
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <span className="text-2xl">🦅</span>
-              <div>
-                <p className="font-oswald text-white text-xl uppercase tracking-wider">Fênix Veículos</p>
-                <p className="text-[#C9A227] text-[10px] tracking-[0.25em] uppercase">Laranjal</p>
-              </div>
+            <div className="mb-1 font-oswald text-2xl font-extrabold uppercase tracking-[2px] text-[#C9A227]">
+              Fenix Veiculos
             </div>
-            <p className="text-[#666] text-sm leading-relaxed">
-              Multimarcas referência em Laranjal, MG. Financiamento facilitado, as melhores taxas e o seu próximo carro sem complicação.
+            <div className="mb-4 text-[11px] uppercase tracking-[2px] text-[#555]">Laranjal</div>
+            <p className="max-w-sm text-sm leading-7 text-[#555]">
+              Multimarcas referencia em Laranjal, MG. Financiamento facilitado, as melhores taxas e o seu proximo carro sem complicacao.
             </p>
-            <div className="flex gap-3 mt-5">
-              <a href={CONSTANTS.instagram} target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 border border-[#333] flex items-center justify-center text-[#AAA] hover:border-[#C9A227] hover:text-[#C9A227] transition-colors">
-                <IgIcon />
+            <div className="mt-5 flex gap-2">
+              <a
+                href={CONSTANTS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex h-9 w-9 items-center justify-center rounded border border-[#2a2a2a] bg-[#1a1a1a] text-[#AAAAAA] transition-colors hover:border-[#C9A227] hover:text-[#C9A227]"
+              >
+                <InstagramGlyph />
               </a>
-              <a href={CONSTANTS.facebook} target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 border border-[#333] flex items-center justify-center text-[#AAA] hover:border-[#C9A227] hover:text-[#C9A227] transition-colors">
-                <FbIcon />
+              <a
+                href={CONSTANTS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex h-9 w-9 items-center justify-center rounded border border-[#2a2a2a] bg-[#1a1a1a] text-[#AAAAAA] transition-colors hover:border-[#C9A227] hover:text-[#C9A227]"
+              >
+                <FacebookGlyph />
               </a>
-              <a href={`https://wa.me/${CONSTANTS.whatsapp}`} target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 border border-[#333] flex items-center justify-center text-[#AAA] hover:border-[#C9A227] hover:text-[#C9A227] transition-colors">
+              <a
+                href={WHATSAPP_URL()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="flex h-9 w-9 items-center justify-center rounded border border-[#2a2a2a] bg-[#1a1a1a] text-[#AAAAAA] transition-colors hover:border-[#C9A227] hover:text-[#C9A227]"
+              >
                 <MessageCircle size={16} />
               </a>
             </div>
           </div>
 
-          {/* Links */}
           <div>
-            <h4 className="font-oswald text-white uppercase tracking-widest text-sm mb-5">Links Rápidos</h4>
-            <nav className="flex flex-col gap-3">
+            <div className="mb-4 text-[11px] font-extrabold uppercase tracking-[2px] text-white">Links rapidos</div>
+            <nav className="space-y-3">
               {[
                 { label: 'Estoque', href: '/estoque' },
                 { label: 'Financiamento', href: '/financiamento' },
-                { label: 'Sobre Nós', href: '/sobre' },
+                { label: 'Sobre nos', href: '/sobre' },
                 { label: 'Contato', href: '/contato' },
-              ].map((l) => (
-                <Link key={l.href} href={l.href}
-                  className="text-[#888] hover:text-[#C9A227] text-sm transition-colors">
-                  {l.label}
+              ].map((item) => (
+                <Link key={item.href} href={item.href} className="block text-sm text-[#555] transition-colors hover:text-[#C9A227]">
+                  {item.label}
                 </Link>
               ))}
             </nav>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="font-oswald text-white uppercase tracking-widest text-sm mb-5">Contato</h4>
-            <div className="flex flex-col gap-2 text-[#888] text-sm">
-              <p>📍 {CONSTANTS.address}</p>
-              <p>🕐 {CONSTANTS.hours}</p>
-              <p>📸 @fenix_veiculos_laranjal</p>
+            <div className="mb-4 text-[11px] font-extrabold uppercase tracking-[2px] text-white">Contato</div>
+            <div className="space-y-3">
+              <div className="flex items-start gap-2 text-sm text-[#555]">
+                <MapPin size={14} className="mt-0.5 shrink-0 text-[#C9A227]" />
+                <span>{CONSTANTS.address}</span>
+              </div>
+              <div className="flex items-start gap-2 text-sm text-[#555]">
+                <Clock size={14} className="mt-0.5 shrink-0 text-[#C9A227]" />
+                <span>{CONSTANTS.hours}</span>
+              </div>
+              <div className="flex items-start gap-2 text-sm text-[#555]">
+                <span className="mt-0.5 shrink-0 text-[#C9A227]"><InstagramGlyph /></span>
+                <span>@fenix_veiculos_laranjal</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-[#1f1f1f] flex flex-col md:flex-row justify-between gap-3 text-[#555] text-xs">
-          <p>© 2024 Fênix Veículos Laranjal. Todos os direitos reservados.</p>
-          <p>
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-5 text-xs text-[#333]">
+          <span>© 2024 Fenix Veiculos Laranjal. Todos os direitos reservados.</span>
+          <span>
             Desenvolvido por{' '}
-            <a href="https://techbild.web.app" target="_blank" rel="noopener noreferrer"
-              className="text-[#888] hover:text-[#C9A227] transition-colors">
+            <a href="https://techbild.web.app" target="_blank" rel="noopener noreferrer" className="font-bold text-[#C9A227] no-underline">
               TechBild
             </a>
-          </p>
+          </span>
         </div>
       </div>
     </footer>

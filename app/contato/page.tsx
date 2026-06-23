@@ -1,142 +1,128 @@
 'use client'
+
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { CONSTANTS, WHATSAPP_URL } from '@/data/constants'
 import { MessageCircle, MapPin, Clock } from 'lucide-react'
 
-const IgIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-    <rect x="2" y="2" width="20" height="20" rx="5" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-  </svg>
-)
-const FbIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-  </svg>
-)
+function InstagramGlyph({ className = '' }: { className?: string }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function FacebookGlyph({ className = '' }: { className?: string }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  )
+}
+
+const contactItems = [
+  { icon: MessageCircle, label: 'WhatsApp', value: CONSTANTS.whatsapp, href: `https://wa.me/${CONSTANTS.whatsapp}` },
+  { icon: MapPin, label: 'Endereco', value: CONSTANTS.address },
+  { icon: InstagramGlyph, label: 'Instagram', value: '@fenix_veiculos_laranjal', href: CONSTANTS.instagram },
+  { icon: Clock, label: 'Horario', value: CONSTANTS.hours },
+]
 
 export default function ContatoPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-      {/* Breadcrumb */}
-      <nav className="text-[#666] text-xs uppercase tracking-widest mb-8">
-        <span>Home</span><span className="mx-2">/</span>
-        <span className="text-[#C9A227]">Contato</span>
-      </nav>
+    <section className="border-t border-[#1f1f1f] bg-[#0d0d0d] px-6 py-16 md:px-12 md:py-20 lg:px-20 xl:px-32">
+      <div className="max-w-7xl mx-auto">
+        <nav className="mb-8 text-xs uppercase tracking-widest text-[#666]">
+          <span>Home</span>
+          <span className="mx-2">/</span>
+          <span className="text-[#C9A227]">Contato</span>
+        </nav>
 
-      <SectionHeader title="Fale com a Gente" highlight="Gente" subtitle="Estamos prontos para te ajudar a encontrar o carro perfeito." />
+        <SectionHeader title="Fale com a Gente" highlight="Gente" subtitle="Estamos prontos para te ajudar a encontrar o carro perfeito." />
 
-      <div className="grid md:grid-cols-2 gap-10">
-        {/* Map */}
-        <div>
-          <div className="bg-[#111] border border-[#1f1f1f] h-72 flex items-center justify-center mb-4">
-            {CONSTANTS.mapsEmbedUrl ? (
-              <iframe src={CONSTANTS.mapsEmbedUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" />
-            ) : (
-              <div className="text-center text-[#444]">
-                <p className="text-4xl mb-3">📍</p>
-                <p className="text-sm uppercase tracking-widest">Laranjal, MG</p>
-                <p className="text-xs text-[#333] mt-1">Mapa em breve</p>
-              </div>
-            )}
-          </div>
-
-          <div className="grid grid-cols-1 gap-3">
-            {[
-              { icon: MapPin, label: 'Endereço', value: CONSTANTS.address },
-              { icon: Clock, label: 'Horário', value: CONSTANTS.hours },
-            ].map(({ icon: Icon, label, value }) => (
-              <div key={label} className="flex items-center gap-4 p-4 bg-[#111] border border-[#1f1f1f]">
-                <div className="w-9 h-9 bg-[rgba(201,162,39,0.1)] flex items-center justify-center flex-shrink-0">
-                  <Icon size={16} className="text-[#C9A227]" />
-                </div>
-                <div>
-                  <p className="text-[#666] text-xs uppercase tracking-widest">{label}</p>
-                  <p className="text-white text-sm mt-0.5">{value}</p>
-                </div>
-              </div>
-            ))}
-
-            <div className="flex items-center gap-4 p-4 bg-[#111] border border-[#1f1f1f]">
-              <div className="w-9 h-9 bg-[rgba(201,162,39,0.1)] flex items-center justify-center flex-shrink-0">
-                <MessageCircle size={16} className="text-[#C9A227]" />
-              </div>
-              <div>
-                <p className="text-[#666] text-xs uppercase tracking-widest">WhatsApp</p>
-                <a href={`https://wa.me/${CONSTANTS.whatsapp}`} target="_blank" rel="noopener noreferrer"
-                  className="text-[#C9A227] text-sm mt-0.5 hover:text-[#E8C84A] transition-colors">
-                  Clique para conversar
-                </a>
-              </div>
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+          <div>
+            <div className="mb-5 flex h-[280px] flex-col items-center justify-center gap-2 rounded border border-[#2a2a2a] bg-[#141414]">
+              {CONSTANTS.mapsEmbedUrl ? (
+                <iframe src={CONSTANTS.mapsEmbedUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" />
+              ) : (
+                <>
+                  <MapPin size={32} className="text-[#C9A227]" />
+                  <div className="text-sm text-[#666]">Laranjal, MG</div>
+                  <div className="text-xs text-[#444]">Mapa em breve</div>
+                </>
+              )}
             </div>
 
-            <div className="flex items-center gap-4 p-4 bg-[#111] border border-[#1f1f1f]">
-              <div className="w-9 h-9 bg-[rgba(201,162,39,0.1)] flex items-center justify-center flex-shrink-0">
-                <IgIcon />
-              </div>
-              <div>
-                <p className="text-[#666] text-xs uppercase tracking-widest">Instagram</p>
-                <a href={CONSTANTS.instagram} target="_blank" rel="noopener noreferrer"
-                  className="text-[#C9A227] text-sm mt-0.5 hover:text-[#E8C84A] transition-colors">
-                  @fenix_veiculos_laranjal
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 p-4 bg-[#111] border border-[#1f1f1f]">
-              <div className="w-9 h-9 bg-[rgba(201,162,39,0.1)] flex items-center justify-center flex-shrink-0">
-                <FbIcon />
-              </div>
-              <div>
-                <p className="text-[#666] text-xs uppercase tracking-widest">Facebook</p>
-                <a href={CONSTANTS.facebook} target="_blank" rel="noopener noreferrer"
-                  className="text-[#C9A227] text-sm mt-0.5 hover:text-[#E8C84A] transition-colors">
-                  Fênix Multimarcas Laranjal
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {contactItems.map(({ icon: Icon, label, value, href }) => (
+                <div key={label} className="rounded border border-[#1f1f1f] bg-[#141414] p-4">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded border border-[rgba(201,162,39,0.3)] bg-[rgba(201,162,39,0.1)]">
+                    <Icon size={18} className="text-[#C9A227]" />
+                  </div>
+                  <div className="mb-1 text-[10px] uppercase tracking-[2px] text-[#555]">{label}</div>
+                  {href ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#C9A227] no-underline hover:text-[#E8C84A]">
+                      {value}
+                    </a>
+                  ) : (
+                    <div className="text-sm font-semibold text-[#C9A227]">{value}</div>
+                  )}
+                </div>
+              ))}
+              <div className="rounded border border-[#1f1f1f] bg-[#141414] p-4">
+                <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded border border-[rgba(201,162,39,0.3)] bg-[rgba(201,162,39,0.1)]">
+                  <FacebookGlyph className="text-[#C9A227]" />
+                </div>
+                <div className="mb-1 text-[10px] uppercase tracking-[2px] text-[#555]">Facebook</div>
+                <a href={CONSTANTS.facebook} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#C9A227] no-underline hover:text-[#E8C84A]">
+                  Fenix Multimarcas Laranjal
                 </a>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Form */}
-        <div className="bg-[#111] border border-[#1f1f1f] p-8">
-          <h2 className="font-oswald text-white text-2xl uppercase mb-2">Envie uma mensagem</h2>
-          <p className="text-[#666] text-sm mb-6">Preencha o formulário e entraremos em contato via WhatsApp.</p>
-
-          <form
-            onSubmit={(e) => {
-              e.preventDefault()
-              const fd = new FormData(e.currentTarget)
-              const text = `Olá! Meu nome é ${fd.get('name')}, fone: ${fd.get('phone')}.\n\nMensagem: ${fd.get('message')}`
-              window.open(WHATSAPP_URL(text), '_blank')
-            }}
-            className="flex flex-col gap-4"
-          >
-            <div>
-              <label className="text-[#666] text-xs uppercase tracking-widest block mb-1.5">Seu nome *</label>
-              <input name="name" required placeholder="João Silva"
-                className="w-full bg-[#0a0a0a] border border-[#333] text-white px-4 py-3 text-sm focus:border-[#C9A227] outline-none transition-colors" />
-            </div>
-            <div>
-              <label className="text-[#666] text-xs uppercase tracking-widest block mb-1.5">WhatsApp / Telefone *</label>
-              <input name="phone" required placeholder="(99) 99999-9999"
-                className="w-full bg-[#0a0a0a] border border-[#333] text-white px-4 py-3 text-sm focus:border-[#C9A227] outline-none transition-colors" />
-            </div>
-            <div>
-              <label className="text-[#666] text-xs uppercase tracking-widest block mb-1.5">Qual veículo você tem interesse? *</label>
-              <textarea name="message" required rows={5}
-                placeholder="Estou interessado em um carro para uso diário, preço até R$ 80.000..."
-                className="w-full bg-[#0a0a0a] border border-[#333] text-white px-4 py-3 text-sm focus:border-[#C9A227] outline-none transition-colors resize-none" />
-            </div>
-            <button type="submit"
-              className="flex items-center justify-center gap-2 bg-[#C9A227] text-black font-bold py-4 uppercase tracking-wide text-sm hover:bg-[#E8C84A] transition-colors w-full">
-              <MessageCircle size={16} /> Enviar via WhatsApp
-            </button>
-            <p className="text-[#555] text-xs text-center">Você será redirecionado para o WhatsApp com a mensagem pré-preenchida.</p>
-          </form>
+          <div className="rounded border border-[#1f1f1f] bg-[#141414] p-8">
+            <div className="mb-5 text-xs uppercase tracking-[3px] text-[#C9A227]">Enviar mensagem</div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                const formData = new FormData(e.currentTarget)
+                const text = `Ola! Meu nome e ${formData.get('name')}, fone: ${formData.get('phone')}.\n\nMensagem: ${formData.get('message')}`
+                window.open(WHATSAPP_URL(text), '_blank')
+              }}
+              className="space-y-3"
+            >
+              <input
+                name="name"
+                required
+                placeholder="Seu nome"
+                className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
+              />
+              <input
+                name="phone"
+                required
+                placeholder="Seu telefone / WhatsApp"
+                className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
+              />
+              <textarea
+                name="message"
+                required
+                rows={5}
+                placeholder="Qual veiculo voce tem interesse?"
+                className="block w-full rounded-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#C9A227]"
+              />
+              <button
+                type="submit"
+                className="w-full rounded-sm bg-[#C9A227] px-4 py-3 text-sm font-extrabold uppercase tracking-[2px] text-black transition-colors hover:bg-[#E8C84A]"
+              >
+                Enviar via WhatsApp
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

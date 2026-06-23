@@ -31,7 +31,7 @@ export function NavBar() {
           scrolled ? 'backdrop-blur-md bg-[rgba(10,10,10,0.95)] border-b border-[#1f1f1f]' : 'bg-[#0a0a0a]'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 select-none">
             <span className="text-2xl">🦅</span>

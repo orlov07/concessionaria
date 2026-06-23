@@ -12,16 +12,16 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const sizeMap = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-sm',
-  lg: 'px-8 py-4 text-base',
+  sm: 'px-4 py-2 text-xs tracking-[1px]',
+  md: 'px-6 py-3 text-xs tracking-[2px]',
+  lg: 'px-8 py-3.5 text-[13px] tracking-[2px]',
 }
 
 export const GoldButton = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'solid', size = 'md', children, className = '', as, href, target, rel, ...props }, ref) => {
-    const base = `inline-flex items-center justify-center gap-2 font-inter font-semibold tracking-wide uppercase transition-all duration-200 ${sizeMap[size]}`
-    const solid = 'bg-[#C9A227] text-black hover:bg-[#E8C84A] active:bg-[#A07A10]'
-    const ghost = 'border border-[#C9A227] text-[#C9A227] hover:bg-[#C9A227] hover:text-black'
+    const base = `inline-flex items-center justify-center gap-2 rounded-sm font-inter font-extrabold uppercase transition-all duration-200 ${sizeMap[size]}`
+    const solid = 'border border-transparent bg-[#C9A227] text-black hover:bg-[#E8C84A] active:bg-[#A07A10]'
+    const ghost = 'border border-[#C9A227] bg-transparent text-[#C9A227] hover:bg-[#C9A227] hover:text-black'
     const cls = `${base} ${variant === 'solid' ? solid : ghost} ${className}`
 
     if (as === 'a' || href) {
